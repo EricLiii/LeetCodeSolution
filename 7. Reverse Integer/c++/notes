@@ -1,0 +1,6 @@
+1. std::reverse() is a void function, thus no return.
+2. -int (e.g. -33) is only a expression. If int is larger than INT_MAX, overflow happened already, so -int will always cause error.
+3. std::string String = std::to_string(Int); #convert int to string.
+4. int Int=std::stoi(String); #convert string to int.
+5. float Float = (float) Int; #convert int to float.
+6. 2^N: pow(2.0,N) #still don't know why the base must be a float
