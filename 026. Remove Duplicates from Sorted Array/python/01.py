@@ -3,6 +3,6 @@ class Solution:
         next_new=0
         for i in range(len(nums)):
             if i==0 or nums[i]!=nums[i-1]:
-                nums[next_new]=nums[i]
+                nums[next_new]=nums[i] #insert the element at the beginning of the list, doesn't create new array.
                 next_new+=1
         return next_new
