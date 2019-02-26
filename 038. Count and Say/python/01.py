@@ -10,3 +10,18 @@ class Solution:
                     next[-2]+=1
             sequence=next
         return "".join(map(str,sequence))
+    
+"""
+# Complete code:
+def main():
+    import sys
+    import io
+    
+    ret = Solution().countAndSay(n)
+    out = (ret);
+    print(out)
+
+
+if __name__ == '__main__':
+    main()
+"""
