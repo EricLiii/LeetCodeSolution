@@ -15,6 +15,7 @@ class Solution:
         return sum
 """
 
+#还要再看，没有完全搞懂！
 class Solution_1:
     def maxSubArray(self, nums: List[int]) -> int:
         overall_max=float('-inf')
@@ -23,7 +24,7 @@ class Solution_1:
             if max_ending_here>0:
                 max_ending_here+=num
             else:
-                max_ending_here=num
+                max_ending_here=num #因为如果max_ending_here<0,它和num相加必定小于num，
             overall_max=max(overall_max,max_ending_here)
         return overall_max
 
