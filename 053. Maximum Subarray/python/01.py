@@ -37,11 +37,9 @@ ref: https://www.youtube.com/watch?v=2MmGzdiKR9Y&t=933s
 def maxSubArray(self, A):
     if not A:
         return 0
-
     curSum = maxSum = A[0]
     for num in A[1:]:
         curSum = max(num, curSum + num)
-        maxSum = max(maxSum, curSum)
-
+        maxSum = max(maxSum, curSum)#只需要知道到num为止sum最大的子数列的sum是多少，没必要知道具体是哪几个数字；而且不一定要和num连起来。
     return maxSum
 
