@@ -26,3 +26,6 @@ class Solution:
                 max_ending_here=num
             overall_max=max(overall_max,max_ending_here)
         return overall_max
+'''
+ref: https://www.youtube.com/watch?v=2MmGzdiKR9Y&t=933s
+'''
