@@ -15,7 +15,7 @@ class Solution:
         return sum
 """
 
-class Solution:
+class Solution_1:
     def maxSubArray(self, nums: List[int]) -> int:
         overall_max=float('-inf')
         max_ending_here=0
@@ -26,6 +26,22 @@ class Solution:
                 max_ending_here=num
             overall_max=max(overall_max,max_ending_here)
         return overall_max
+
+class Solution_2:
 '''
 ref: https://www.youtube.com/watch?v=2MmGzdiKR9Y&t=933s
 '''
+# @param A, a list of integers
+# @return an integer
+# 6:57
+def maxSubArray(self, A):
+    if not A:
+        return 0
+
+    curSum = maxSum = A[0]
+    for num in A[1:]:
+        curSum = max(num, curSum + num)
+        maxSum = max(maxSum, curSum)
+
+    return maxSum
+
