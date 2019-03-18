@@ -20,7 +20,8 @@ class Solution:
         
 class Solution:
     '''
-    912ms, why?
+    912ms, quite slow: I think it's because this solution tranverse the string twice to make sure that 
+                       palindorme substring can be found in both odd and even cases.
     '''
     def longestPalindrome(self, s: str) -> str:
         res = ""
