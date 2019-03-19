@@ -9,7 +9,7 @@ class Solution:
         if not str:
             return 0
         
-        digits={i for i in '0123456789'}
+        digits={i for i in '0123456789'}   # Or use isdigit() instead of dic to check if it is an integer, will be faster
         result=0
         for c in str:
             if c not in digits:
