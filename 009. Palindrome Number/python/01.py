@@ -7,3 +7,14 @@ class Solution:
             num=num*10+x%10
             x=x//10
         return x==num or x==num//10 
+
+class Solution:
+    '''
+    using string
+    '''
+    def isPalindrome(self, x: int) -> bool:
+        s=str(x)
+        if s==s[::-1]:
+            return True
+        else:
+            return False
