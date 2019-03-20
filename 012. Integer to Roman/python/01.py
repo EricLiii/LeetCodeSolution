@@ -21,9 +21,6 @@ class Solution:
         return "".join(roman)
         
 class Solution:
-    '''
-    This solution is not general. Only works when the integer is from 1 to 3999.
-    '''
     def intToRoman(self, num: int) -> str:
         M = ["", "M", "MM", "MMM"];
         C = ["", "C", "CC", "CCC", "CD", "D", "DC", "DCC", "DCCC", "CM"];
