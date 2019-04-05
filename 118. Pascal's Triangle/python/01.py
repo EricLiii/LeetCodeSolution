@@ -9,3 +9,14 @@ class Solution:
                 pascal[-1].append(num1+num2)
             pascal[-1].append(1)
         return pascal
+
+    
+    def generate(self, numRows):
+        '''
+        Learn how to use map() and lambda
+        '''
+        res = [[1]]
+        for i in range(1, numRows):
+            res += list((map(lambda x, y: x+y, res[-1] + [0], [0] + res[-1])))
+            # OR res.append(list((map(lambda x, y: x+y, res[-1] + [0], [0] + res[-1]))))
+        return res[:numRows]
