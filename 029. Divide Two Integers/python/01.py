@@ -26,4 +26,8 @@ class Solution:
             res += 1
         if not positive:
             res = -res
-        return min(max(-2147483648, res), 2147483647)        
+        return min(max(-2147483648, res), 2147483647)     
+    
+"Maybe don't need return min(max(-2147483648, res), 2147483647), just return min(res, 2147483647) is accepted, too"   
+"This is because there is no possibility that res is smaller than -2147483648 in this problem."
+    
