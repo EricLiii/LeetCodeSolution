@@ -1,4 +1,8 @@
 class Solution:
+    """
+    Runtime: 68 ms, faster than 47.40% of Python3 online submissions for Container With Most Water.
+    Memory Usage: 14.7 MB, less than 7.66% of Python3 online submissions for Container With Most Water.
+    """
     def maxArea(self, height: List[int]) -> int:
         left=0
         right=len(height)-1
