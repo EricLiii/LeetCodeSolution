@@ -1,4 +1,8 @@
-class Solution:
+class Solution_1:
+"""
+Runtime: 88 ms, faster than 92.16% of Python3 online submissions for 4Sum.
+Memory Usage: 13.3 MB, less than 49.80% of Python3 online submissions for 4Sum.
+"""
     def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
         nums.sort()
         results = []
@@ -31,8 +35,47 @@ class Solution:
                 if i == 0 or i > 0 and nums[i-1] != nums[i]:  # recursively reduce N
                     self.findNsum(nums[i+1:], target-nums[i], N-1, result+[nums[i]], results)
         return
+
+class Solution_2:
+"""
+Author: Zefeng
+
+Runtime: 216 ms, faster than 61.22% of Python3 online submissions for 4Sum.
+Memory Usage: 13.1 MB, less than 90.78% of Python3 online submissions for 4Sum.
+"""
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        res = self.nSum(4, nums, target)
+        return res
         
-class Solution:
+    def nSum(self, N, nums, target):
+        nums.sort()
+        res = []  #相比solution_1，只开辟一块空间，降低了空间复杂度。
+        if N < 2:
+            return nums
+        elif N == 2:
+            lst = []
+            for i in range(len(nums)):          #这个方法就没有solution_1的快，因为solution_1是从两边往中间走，而这里是从开头遍历。
+                if target - nums[i] in lst:
+                    if [target - nums[i], nums[i]] not in res:
+                        res.append([target - nums[i], nums[i]])
+                lst.append(nums[i])
+            return res
+        else:
+            for i in range(len(nums)-N+1):
+                if target < nums[i]*N or target > nums[-1]*N: #这一行很有必要，时间从2068ms直接降到216ms。
+                    break
+                if i > 0 and nums[i] == nums[i-1]:
+                    continue
+                lst = self.nSum(N-1, nums[i+1:], target - nums[i])
+                for item in lst:  #这里比solution_1多加了一个for循环，于是O(n)变成了O(n^2)
+                    if item:
+                        item.insert(0, nums[i])
+                        if item not in res:
+                            res.append(item)
+            return res
+        
+        
+class Solution_3:
 """
 Author: Zefeng
 
