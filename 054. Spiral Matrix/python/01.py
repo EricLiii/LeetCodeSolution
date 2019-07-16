@@ -45,13 +45,15 @@ Eg, matrix = [[1,2,3],
    Eg,
    matrix = [[4,5,6],
              [7,8,9]]
-   由于我们想处理的是matrix的两个子列表，所以此时需要用*将matrix分解。
-   zip(*matrix) 会将[4,5,6]和[7,8,9]对应维度拼接成元组，即(4,7),(5,8)和(6,9)。但是需要注意的是，zip()返回的
-   是一个zip类型的object，如果我们想输出其中的元素，有两种办法：一是用list()函数将其转化为列表
-   print(list(zip(*matrix))) >> [(4,7),(5,8),(6,9)]; 二是用*号将其分解：
-   *zip(*matrix) >> (4,7) (5,8) (6,9) (注意：*zip(*matrix)会报错，这里只是为了说明才这样写)。
-   print(*zip(*matrix)) >> (4,7) (5,8) (6,9)
-   print([*zip(*matrix)]) >> [(4,7),(5,8),(6,9)]
+   (1)由于我们想处理的是matrix的两个子列表，所以此时需要用*将matrix分解。
+      zip(*matrix) 会将[4,5,6]和[7,8,9]对应维度拼接成元组，即(4,7),(5,8)和(6,9)。
+   (2)但是需要注意的是，zip()返回的是一个zip类型的object，如果我们想输出其中的元素，有两种办法：
+      一是用list()函数将其转化为列表
+      print(list(zip(*matrix))) >> [(4,7),(5,8),(6,9)]; 
+      二是用*号将其分解：
+      *zip(*matrix) >> (4,7) (5,8) (6,9) (注意：*zip(*matrix)会报错，这里只是为了说明才这样写)。
+      print(*zip(*matrix)) >> (4,7) (5,8) (6,9)
+      print([*zip(*matrix)]) >> [(4,7),(5,8),(6,9)]
 4. [::-1]是逆序排列：matrix = [[4,7],
                                [5,8],
                                [6,9]]
@@ -77,7 +79,7 @@ Eg, matrix = [[1,2,3],
 
 class Solution_2:
 """
-相比之下这个就容i理解多了.
+相比之下这个就容易理解多了.
 
 Runtime: 32 ms, faster than 86.87% of Python3 online submissions for Spiral Matrix.
 Memory Usage: 13.1 MB, less than 84.28% of Python3 online submissions for Spiral Matrix.
