@@ -94,6 +94,7 @@ Memory Usage: 13.1 MB, less than 84.28% of Python3 online submissions for Spiral
             if matrix:
                 ret += matrix.pop()[::-1]
             if matrix and matrix[0]:
-                for row in matrix[::-1]:
+                for row in matrix[::-1]: #matrix[::-1] will only reverse matrix temporaryly, 
+                                         #so won't affect the after process.
                     ret.append(row.pop(0))
         return ret
