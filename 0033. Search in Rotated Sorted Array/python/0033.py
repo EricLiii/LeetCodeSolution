@@ -1,4 +1,4 @@
-class Solution:
+class Solution_1:
 """
 Link:https://www.geeksforgeeks.org/search-an-element-in-a-sorted-and-pivoted-array/
 
@@ -42,3 +42,34 @@ Memory Usage: 13.2 MB, less than 62.96% of Python3 online submissions for Search
         if key >= arr[mid] and key <= arr[h]: 
             return self.customBinarySearch(arr, mid+1, h, key) 
         return self.customBinarySearch(arr, l, mid-1, key) 
+        
+class Solution_2:
+"""
+Runtime: 52 ms, faster than 51.07% of Python3 online submissions for Search in Rotated Sorted Array.
+Memory Usage: 14 MB, less than 5.05% of Python3 online submissions for Search in Rotated Sorted Array.
+
+Idea:
+iterative solution.
+"""
+    def search(self, nums: List[int], target: int) -> int:
+        l, r = 0, len(nums)-1
+        while l <= r:
+            mid = l + (r-l)//2
+            if nums[mid] == target:
+                return mid
+
+            # the first half is ordered
+            if nums[l] <= nums[mid]:
+                # target is in the first half
+                if nums[l] <= target < nums[mid]:
+                    r = mid - 1
+                else:
+                    l = mid + 1
+            # the second half is ordered
+            else:
+                # target is in the second half
+                if nums[mid] < target <= nums[r]:
+                    l = mid + 1
+                else:
+                    r = mid - 1
+        return -1
