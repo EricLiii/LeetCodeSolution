@@ -19,6 +19,7 @@ Memory Usage: 21.4 MB, less than 16.28% of Python3 online submissions for Sort L
         return self.merge(*map(self.sortList, (head, slow)))
         
     def merge(self, h1, h2):
+        # 只是创建一个空的节点，不算使用额外空间。
         dummy = head = ListNode(None)
         while h1 and h2:
             if h1.val < h2.val:
