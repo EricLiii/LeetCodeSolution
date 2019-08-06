@@ -36,3 +36,59 @@ Idea:
                 n += 1
             e += 1
         return str(res)
+        
+class Solution_2:
+"""
+Simplify solution_1.
+
+Runtime: 280 ms, faster than 7.73% of Python3 online submissions for Multiply Strings.
+Memory Usage: 14 MB, less than 5.66% of Python3 online submissions for Multiply Strings.
+"""
+    def multiply(self, num1: str, num2: str) -> str:
+        if not num1 or not num2:
+            return 0
+        lst = []
+        lst2 = []
+        res = 0
+        n = e = 0
+        for i in range(len(num1)-1, -1, -1):
+            n = 0
+            for j in range(len(num2)-1,-1, -1):
+                res += int(num1[i])*int(num2[j])*10**n*10**e
+                n += 1
+            e += 1
+        return str(res)
+        
+class Solution_3:
+"""
+记这个！
+
+Runtime: 160 ms, faster than 37.78% of Python3 online submissions for Multiply Strings.
+Memory Usage: 13.7 MB, less than 5.68% of Python3 online submissions for Multiply Strings.
+
+Link:
+https://leetcode.com/problems/multiply-strings/discuss/17605/Easiest-JAVA-Solution-with-Graph-Explanation
+"""
+    def multiply(self, num1: str, num2: str) -> str:
+        if not num1 or not num2:
+            return "0"
+        res = "0"
+        lst = [0] * (len(num1) + len(num2))
+        for i in range(len(num1)-1, -1, -1):
+            for j in range(len(num2)-1, -1, -1):
+                mul = int(num1[i]) * int(num2[j])
+                p1, p2 = i+j, i+j+1
+                summ = mul + lst[p2]
+                #这里注意p1处要加上之前的值，p2处直接替换。
+                lst[p1] += summ//10
+                lst[p2] = summ%10
+        for i in range(len(lst)):
+            if lst[i] != 0:
+                lst[i] = str(lst[i])
+            else:
+                lst[i] = "0"
+        res = "".join(lst)
+        #lstrip(): 避免"01","001",...等情况出现。
+        #int(res): 避免"0","00","000",..等情况出现。
+        res = res.lstrip("0") if int(res) != 0 else "0"
+        return res
