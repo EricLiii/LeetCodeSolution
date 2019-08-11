@@ -1,16 +1,13 @@
-class Solution(object):
-    def convert(self, s, numRows):
-        """
-        :type s: str
-        :type numRows: int
-        :rtype: str
-        """
+class Solution_1:
+"""
+Runtime: 56 ms, faster than 93.42% of Python3 online submissions for ZigZag Conversion.
+Memory Usage: 13.8 MB, less than 10.00% of Python3 online submissions for ZigZag Conversion.
+"""
+    def convert(self, s: str, numRows: int) -> str:
         if numRows == 1 or numRows >= len(s):
             return s
-
-        L = [''] * numRows
+        L = [""] * numRows
         index, step = 0, 1
-
         for x in s:
             L[index] += x
             if index == 0:
@@ -18,5 +15,4 @@ class Solution(object):
             elif index == numRows -1:
                 step = -1
             index += step
-
-        return ''.join(L)
+        return "".join(L)
