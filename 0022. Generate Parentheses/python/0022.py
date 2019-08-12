@@ -10,6 +10,13 @@ Link: https://leetcode.com/problems/generate-parentheses/discuss/10100/Easy-to-u
     def generateParenthesis(self, n: int) -> List[str]:
         lst = []
         string = ""
+        #关键：将lst作为参数传递。
+        "在python中，一切皆对象，Python参数传递采用的都是“传对象引用”的方式。"
+        "实际上，这种方式相当于传值和传引用的一种综合。如果函数收到的是一个可变对象(比如字典或者列表)"
+        "的引用，就能修改对象的原始值，相当于通过“传引用”来传递对象。"
+        "如果函数收到的是一个不可变对象（比如数字、字符或者元组）的引用,就不能直接修改原始对象，"
+        "相当于通过“传值’来传递对象，此时如果想改变这些变量的值，可以将这些变量申明为全局变量。"
+        #所以这里lst实际上是传引用。0091题中我曾尝试传引用一个int值结果失败了，就是因为int值是不可变对象。
         self.backtracking(lst, string, 0, 0, n)
         return lst
     
