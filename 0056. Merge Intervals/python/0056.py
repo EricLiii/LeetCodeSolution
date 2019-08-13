@@ -33,7 +33,8 @@ Runtime: 44 ms, faster than 92.56% of Python3 online submissions for Merge Inter
 Memory Usage: 14.1 MB, less than 96.17% of Python3 online submissions for Merge Intervals.
 
 Idea:
-Just go through the intervals sorted by start coordinate and either combine the current interval with the previous one if they overlap, or add it to the output by itself if they don't.
+Just go through the intervals sorted by start coordinate and either combine the current interval 
+with the previous one if they overlap, or add it to the output by itself if they don't.
 """
     def merge(self, intervals: List[List[int]]) -> List[List[int]]:
         out = []
