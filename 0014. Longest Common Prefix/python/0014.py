@@ -1,16 +1,14 @@
 class Solution_1:
 """
-
+记这个.
 """
     def longestCommonPrefix(self, strs: List[str]) -> str:
         if not strs:
             return ''
         #这里很巧妙，利用了sort()给字符串列表排序的特性:
-        #    sort()在给字符串列表排序时，key不是ken,而是每个对应位置字符的ascii码。
+        #    sort()在给字符串列表排序时，key不是len,而是每个对应位置字符的ascii码。
         #    例如['z', '12', '3', 'a'].sort() -> ['12', '3', 'a', 'z'].
         
-        #    但是还是有点不明白为什么只需要比较第一个和最后一个。
-        #    这个solution的评论里解释了一下，没看懂，以后有时间一定再想想
         #    https://leetcode.com/problems/longest-common-prefix/discuss/172553/beat-100-python-submission-short-and-clean
         
         #也可以直接比较min(strs)和max(strs).

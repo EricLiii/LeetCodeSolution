@@ -6,6 +6,7 @@ Memory Usage: 11.8 MB, less than 31.25% of Python online submissions for Integer
 记这个，下面那个太tricky.
 """
     def intToRoman(self, num: int) -> str:
+        #虽然名字叫mapping，但其实是一个list.
         mapping=[(1000,'M'),
                  (900,'CM'),
                  (500,'D'),

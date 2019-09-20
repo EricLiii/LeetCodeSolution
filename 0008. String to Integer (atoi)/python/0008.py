@@ -79,3 +79,37 @@ Memory Usage: 13.9 MB, less than 5.24% of Python3 online submissions for String 
             ret = ret*10 + int(ls[i])
             i += 1
         return max(-2**31, min(sign * ret,2**31-1))
+        
+class Solution:
+"""
+Author: Zefeng
+Runtime: 36 ms, faster than 92.50% of Python3 online submissions for String to Integer (atoi).
+Memory Usage: 14 MB, less than 5.95% of Python3 online submissions for String to Integer (atoi).
+
+自己写的，不过有点繁琐.
+"""
+    def myAtoi(self, str: str) -> int:
+        if not str or not str.strip(" "):
+            return 0
+        str = str.strip(" ")
+        if str[0] == "+" or str[0] == "-":
+            pos = 1 if str[0] == "+" else -1
+            str = str[1:]
+        elif str[0].isdigit():
+            pos = 1
+        else:
+            return 0
+        
+        for i in range(len(str)):
+            if not str[i].isdigit():
+                str = str[:i]
+                break
+        if str:
+            value = int(str)
+        else:
+            return 0
+        if pos * value > 2**31 - 1:
+            return 2**31-1
+        elif pos * value < -2**31:
+            return -2**31
+        return pos * value
