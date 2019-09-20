@@ -5,20 +5,26 @@ Memory Usage: 13.8 MB, less than 22.69% of Python3 online submissions for Longes
 
 Fast.
 
-有可能是Manacher’s Algorithm，但是还没搞懂。
+Link: https://leetcode.com/problems/longest-palindromic-substring/discuss/2925/Python-O(n2)-method-with-some-optimization-88ms.
+
+因为每次maxlen的增加只会是1或者2，对应的start可能是i - maxLen或者i - maxLen - 1.
+因此情况a先判断在i-maxLen可以减1的情况下是否有新的最长回文。
+情况b则是判断在i-maxLen不能减1的情况下是否有新的最长回文.
 """
     def longestPalindrome(self, s: str) -> str:
-        if len(s)==0:
+        if len(s) == 0:
         	return ""
-        maxLen=1
-        start=0
+        maxLen = 1
+        start = 0
         for i in range(len(s)):
-        	if i-maxLen >=1 and s[i-maxLen-1:i+1]==s[i-maxLen-1:i+1][::-1]:
-        		start=i-maxLen-1
-        		maxLen+=2
-        	elif i-maxLen >=0 and s[i-maxLen:i+1]==s[i-maxLen:i+1][::-1]:
-        		start=i-maxLen
-        		maxLen+=1
+            #a
+        	if i - maxLen >= 1 and s[i-maxLen-1:i+1] == s[i-maxLen-1:i+1][::-1]:
+        		start = i - maxLen - 1
+        		maxLen += 2
+            #b
+        	elif i - maxLen >= 0 and s[i-maxLen:i+1] == s[i-maxLen:i+1][::-1]:
+        		start = i - maxLen
+        		maxLen += 1
         return s[start:start+maxLen]
         
 class Solution_2:
@@ -83,4 +89,6 @@ class Solution_4:
 Manacher’s Algorithm: https://www.geeksforgeeks.org/manachers-algorithm-linear-time-longest-palindromic-substring-part-1/
 
 有时间一定要啃一下这个算法。
+
+曼彻斯特!
 """

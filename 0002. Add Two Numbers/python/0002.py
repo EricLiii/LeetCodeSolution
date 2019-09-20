@@ -12,7 +12,7 @@ Memory Usage: 14.1 MB, less than 5.13% of Python3 online submissions for Add Two
         if l2:
             carry += l2.val
             l2 = l2.next
-        cur.next = ListNode(carry%10)
+        cur.next = ListNode(carry%10) #求carry不能将l1.val l2.val carry相加之后与9比较，而是应该取余。
         cur = cur.next
         carry //= 10
     return dummy.next
@@ -79,7 +79,7 @@ Memory Usage: 13.9 MB, less than 5.13% of Python3 online submissions for Add Two
             if l2:
                 v2 = l2.val
                 l2 = l2.next
-            carry, val = divmod(v1+v2+carry, 10) # Remember the usage of divmod.
+            carry, val = divmod(v1+v2+carry, 10) # Remember the usage of divmod. carry 在前, value在后.
             n.next = ListNode(val)
             n = n.next
         return root.next
