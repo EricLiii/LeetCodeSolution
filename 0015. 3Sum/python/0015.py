@@ -21,6 +21,8 @@ class Solution:
                     #不过append tuple 确实比append list 快一点。
                     while l < r and nums[l] == nums[l+1]:
                         l += 1
+                    #已经判断过l之后，其实不需要再判断r也可以通过
+                    #但是判断一下会加快速度。
                     while l < r and nums[r] == nums[r-1]:
                         r -= 1
                     l += 1; r -= 1
