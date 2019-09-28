@@ -14,6 +14,8 @@ Idea:
        to arr[h], recur for arr[mid+1..h].
     b) Else recur for arr[l..mid] 
 
+这个题主要就是理解只要arr[l] <= arr[mid]， 那么就是sorted的。自己可以写一点例子看看.
+
 Runtime: 32 ms, faster than 91.71% of Python3 online submissions for Search in Rotated Sorted Array.
 Memory Usage: 13.2 MB, less than 62.96% of Python3 online submissions for Search in Rotated Sorted Array.
 """

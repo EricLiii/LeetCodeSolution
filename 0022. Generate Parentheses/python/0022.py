@@ -21,13 +21,13 @@ Link: https://leetcode.com/problems/generate-parentheses/discuss/10100/Easy-to-u
         return lst
     
     def backtracking(self, lst, string, open, close, n):
-        if len(string) == 2*n:
+        if len(string) == 2*n: #if close == n: 也可以.
             lst.append(string)
             return
         #注意，以下是if...if,不是if...else.
         if open < n:
             self.backtracking(lst, string+"(", open+1, close, n)
-        if close < open:
+        if close < open: #注意这里是close < open, 不是close < n.
             self.backtracking(lst, string+")", open, close+1, n)
             
 class Solution_2:

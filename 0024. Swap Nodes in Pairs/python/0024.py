@@ -52,10 +52,10 @@ Idea:
 """
     def swapPairs(self, head: ListNode) -> ListNode:
         # 这里注意，dummy = ListNode(0)    和     dummy = pre = ListNode(0)      
-        #        pre = ListNode(0)
+        #           pre = ListNode(0)
         # 这两种写法代表的含义是不一样的.
-        # 第一种：dummy和pre指向的是同一个对象，对pre的操作也是对dummy的操作;
-        # 第二种：dummy和pre是独立的，对pre的操作不影响dummy;
+        # 第一种：dummy和pre指向的是同一个空间，对pre的操作也是对dummy的操作;
+        # 第二种：dummy和pre是独立的,开辟了两个空间，对pre的操作不影响dummy;
         # 这是因为第二种里dummy和pre是对同一个ListNode的引用.
         dummy = pre = ListNode(0)
         pre.next = head

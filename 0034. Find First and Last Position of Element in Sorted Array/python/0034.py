@@ -31,3 +31,39 @@ There are better solutions in discussion, but not easy to understand. Study late
             else : 
                 return self.last(arr, (mid + 1), high, x, n) 
         return -1
+        
+        
+class Solution:
+"""
+Runtime: 100 ms, faster than 76.76% of Python3 online submissions for Find First and Last Position of Element in Sorted Array.
+Memory Usage: 14.9 MB, less than 5.36% of Python3 online submissions for Find First and Last Position of Element in Sorted Array.
+
+Link: https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/discuss/14699/Clean-iterative-solution-with-two-binary-searches-(with-explanation)
+
+这道题主要是得想到用两个bs,一个是解决不了的。
+"""
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        if not nums:
+            return [-1, -1]
+
+        def bisect_left(nums, target):
+            l, r = 0, len(nums) - 1
+            while l < r:
+                m = (l + r) // 2
+                if nums[m] < target:
+                    l = m + 1
+                else:
+                    r = m
+            return l if nums[l] == target else -1
+
+        def bisect_right(nums, target):
+            l, r = 0, len(nums) - 1
+            while l < r:
+                m = (l + r) // 2 + 1 # +1是重点！！
+                if nums[m] > target:
+                    r = m - 1
+                else:
+                    l = m
+            return l if nums[l] == target else -1
+
+        return [bisect_left(nums, target), bisect_right(nums, target)]
