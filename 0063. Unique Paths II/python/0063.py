@@ -51,7 +51,25 @@ An improved version of solution_1, save space, but the time complexity is still 
                     dp[j] = dp[j] + dp[j-1]
         return dp[-1]
         
+
 class Solution_3:
 """
-There should be a faster solution, find it later!!!
+Runtime: 64 ms, faster than 10.97% of Python3 online submissions for Unique Paths II.
+Memory Usage: 14 MB, less than 8.89% of Python3 online submissions for Unique Paths II.
+
+Link: https://leetcode.com/problems/unique-paths-ii/discuss/23250/Short-JAVA-solution
+
+与solution_2一样，稍微更简单一点.
 """
+
+    def uniquePathsWithObstacles(self, obstacleGrid: List[List[int]]) -> int:
+        width = len(obstacleGrid[0])
+        dp = [0] * width
+        dp[0] = 1
+        for row in obstacleGrid:
+            for j in range(len(row)):
+                if row[j] == 1:
+                    dp[j] = 0
+                elif j > 0:
+                    dp[j] += dp[j-1]
+        return dp[-1]

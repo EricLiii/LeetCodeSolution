@@ -50,7 +50,31 @@ Idea:
             for i in range(m):
                 matrix[i][0] = 0
                 
+                
 class Solution_2:
 """
-solution_1的时间复杂度很差，寻找一个更好的solution。
-"""             
+Runtime: 152 ms, faster than 80.05% of Python3 online submissions for Set Matrix Zeroes.
+Memory Usage: 14.3 MB, less than 5.13% of Python3 online submissions for Set Matrix Zeroes.
+
+记这个!
+"""
+    def setZeroes(self, matrix: List[List[int]]) -> None:
+        """
+        Do not return anything, modify matrix in-place instead.
+        """
+        # First row has zero?
+        m, n, firstRowHasZero = len(matrix), len(matrix[0]), not all(matrix[0])
+        # Use first row/column as marker, scan the matrix
+        for i in range(1, m):
+            for j in range(n):
+                if matrix[i][j] == 0:
+                    matrix[0][j] = matrix[i][0] = 0
+        # Set the zeros
+        for i in range(1, m):
+            #因为这里用第一列作为标志，所以需要从后往前遍历，否则会污染标志.
+            for j in range(n - 1, -1, -1):
+                if matrix[i][0] == 0 or matrix[0][j] == 0:
+                    matrix[i][j] = 0
+        # Set the zeros for the first row
+        if firstRowHasZero:
+            matrix[0] = [0] * n

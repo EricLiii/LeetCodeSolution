@@ -61,7 +61,7 @@ Memory Usage: 14 MB, less than 5.66% of Python3 online submissions for Multiply 
         
 class Solution_3:
 """
-记这个！
+记这个!!!
 
 Runtime: 160 ms, faster than 37.78% of Python3 online submissions for Multiply Strings.
 Memory Usage: 13.7 MB, less than 5.68% of Python3 online submissions for Multiply Strings.
@@ -74,20 +74,16 @@ https://leetcode.com/problems/multiply-strings/discuss/17605/Easiest-JAVA-Soluti
             return "0"
         res = "0"
         lst = [0] * (len(num1) + len(num2))
-        for i in range(len(num1)-1, -1, -1):
+        for i in range(len(num1)-1, -1, -1): #记住从后往前遍历的写法.
             for j in range(len(num2)-1, -1, -1):
                 mul = int(num1[i]) * int(num2[j])
                 p1, p2 = i+j, i+j+1
                 summ = mul + lst[p2]
                 #这里注意p1处要加上之前的值，p2处直接替换。
-                lst[p1] += summ//10
-                lst[p2] = summ%10
-        for i in range(len(lst)):
-            if lst[i] != 0:
-                lst[i] = str(lst[i])
-            else:
-                lst[i] = "0"
-        res = "".join(lst)
+                #what if pos[p1] == 9 and sum > 10 ?  discussion里有解答. 
+                lst[p1] += summ // 10
+                lst[p2] = summ % 10
+        res = "".join(map(str, lst))
         #lstrip(): 避免"01","001",...等情况出现。
         #int(res): 避免"0","00","000",..等情况出现。
         res = res.lstrip("0") if int(res) != 0 else "0"

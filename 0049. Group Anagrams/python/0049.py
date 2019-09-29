@@ -6,7 +6,8 @@ Memory Usage: 17.4 MB, less than 21.08% of Python3 online submissions for Group 
     def groupAnagrams(self, strs: List[str]) -> List[List[str]]:
         d = {}
         for w in strs:
-            #tuple可以作为dict的key.
+            #tuple可以作为dict的key. 
+            #linkhttps里讲了什么数据类型可以作为key. https://www.cnblogs.com/zxmbky/p/10184054.html
             #sorted()是在copy上进行操作，不影响w.
             key = tuple(sorted(w))
             #dict的get()函数：

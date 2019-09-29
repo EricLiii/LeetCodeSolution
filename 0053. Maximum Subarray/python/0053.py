@@ -24,14 +24,14 @@ Runtime: 36 ms, faster than 96.78% of Python3 online submissions for Maximum Sub
 Memory Usage: 13.6 MB, less than 76.79% of Python3 online submissions for Maximum Subarray.
 """
     def maxSubArray(self, nums: List[int]) -> int:
-        overall_max=float('-inf')
-        max_ending_here=0
+        overall_max = float('-inf')
+        max_ending_here = 0
         for num in nums:
-            if max_ending_here>0:
-                max_ending_here+=num
+            if max_ending_here > 0:
+                max_ending_here += num
             else:
-                max_ending_here=num #因为如果max_ending_here<0,它和num相加必定小于num，
-            overall_max=max(overall_max,max_ending_here)
+                max_ending_here = num #因为如果max_ending_here<0,它和num相加必定小于num，
+            overall_max = max(overall_max, max_ending_here)
         return overall_max
 
 class Solution_2:

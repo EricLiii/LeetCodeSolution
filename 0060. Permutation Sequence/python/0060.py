@@ -49,10 +49,10 @@ Link: https://leetcode.com/problems/permutation-sequence/discuss/22512/Share-my-
         while n > 0:
             #减1是关键。
             n -= 1
-            #math.factorial(n)求的是每个数字分别做开头时permutation的个数。
+            #math.factorial(n)求的是每个数字分别做开头时permutation的个数。所以前面要减1.
             #例如，n=4，每个数字做开头有6组permutation。
             #其实跟我的思想时一致的，但是实现更简洁。
-            index, k = divmod(k, math.factorial(n))
+            index, k = divmod(k, math.factorial(n)) #divmod操作减小了k的值，很简洁.
             permutation += str(numbers[index])
             numbers.remove(numbers[index])
         return permutation

@@ -65,7 +65,7 @@ Improved code based on the solution above
                     return
                 elif nums[i] == target:
                     temp = pre + [nums[i]]
-                    temp.sort()
+                    #temp.sort()不需要再次sort了，因为candidates已经sort了.
                     if temp not in res:
                         res.append(temp)
                     return
@@ -74,6 +74,7 @@ Improved code based on the solution above
                     #比如，nums = [3，4，7，8]，target = 11：
                     #    [3,8]是以3为起始点时找到的解，[8,3]是以8为起始点找到的解。这两个解重复了。其实在以8为起始点时，不必再从8前面的项中找，
                     #    因为找出的包括前面项的解一定在前面的寻找中已经找到了。这样就大大减少了运行时间。
+                    #从i开始是为了允许重复使用自身。
                     dfs(nums[i:], target-nums[i], pre + [nums[i]], res)
         pre = []
         res = []

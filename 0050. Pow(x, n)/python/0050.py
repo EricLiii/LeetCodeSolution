@@ -50,11 +50,11 @@ Idea: Recursive solution.
             return self.myPow(1/x, -n)
         if (int(n % 2) == 0): 
             #这里当n时偶数的时候，将输入改为x*x,这样就减少一次递归。
-            return self.myPow(x*x, int(n / 2))
+            return self.myPow(x*x, n // 2)
         else: 
             #这里当n时奇数的时候，将n减一，这样n就成了偶数,在进行下一次判断时，输入会变成x*x.
             #相比BadSolution_2,也减少了一次递归。
-            return x * self.myPow(x, int(n-1))
+            return x * self.myPow(x, n-1)
             
 class Solution_2:
 """
