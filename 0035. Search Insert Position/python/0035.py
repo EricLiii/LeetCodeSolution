@@ -6,16 +6,16 @@ Memory Usage: 13.6 MB, less than 85.00% of Python3 online submissions for Search
 Binary search
 """
     def searchInsert(self, nums: List[int], target: int) -> int:
-        left=0
-        right=len(nums)
-        while left<=right and left < len(nums) and right>=0:
-            mid=(left+right)//2
+        left = 0
+        right = len(nums) - 1
+        while left <= right:
+            mid = (left + right) // 2
             if target == nums[mid]:
                 return mid
             if target < nums[mid]:
-                right=mid-1
+                right = mid - 1
             else:
-                left=mid+1
+                left = mid + 1
         return left
 
 

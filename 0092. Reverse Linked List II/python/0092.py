@@ -40,7 +40,7 @@ Idea:
             cur = cur.next
             prev = prev.next
         
-        for _ in range(n - m):
+        for _ in range(n - m): #其实就是每一次将cur的下一个放到pre的下一个，这样就完成了逆序.
             temp = cur.next
             cur.next = temp.next
             temp.next = prev.next

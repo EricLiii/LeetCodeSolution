@@ -23,6 +23,8 @@ Memory Usage: 14 MB, less than 5.47% of Python3 online submissions for Merge Sor
 
 Idea: 
 Same idea with solution_1, but more concise.
+
+这道题主要就是要明白存在 nums1 = [0], m = 0; nums2 = [1], n = 1 这个edge case.
 """
     def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
         """
@@ -35,5 +37,5 @@ Same idea with solution_1, but more concise.
             else:
                 nums1[m+n-1] = nums2[n-1]
                 n -= 1
-        if n > 0:
+        if n > 0: #handle edge case.
             nums1[:n] = nums2[:n]

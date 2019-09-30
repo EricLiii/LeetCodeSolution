@@ -28,3 +28,22 @@ Memory Usage: 14.8 MB, less than 42.85% of Python3 online submissions for Remove
                 index += 1
             count += 1
         return len(nums[:index])
+        
+class Solution:
+"""
+Author: Zefeng 
+Runtime: 1048 ms, faster than 5.16% of Python3 online submissions for Remove Duplicates from Sorted Array.
+Memory Usage: 15.5 MB, less than 5.74% of Python3 online submissions for Remove Duplicates from Sorted Array.
+
+太慢了，因为pop. 而且不符合题意，空间不是O(1).
+"""
+    def removeDuplicates(self, nums: List[int]) -> int:
+        lst = []
+        i = 0
+        while i < len(nums):
+            if nums[i] not in lst:
+                lst.append(nums[i])
+                i += 1
+            else:
+                nums.pop(i)
+        return len(nums)

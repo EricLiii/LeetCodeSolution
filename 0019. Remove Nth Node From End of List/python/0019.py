@@ -10,7 +10,7 @@ Idea:
         first, second = head, head
         for _ in range(n):
             first = first.next
-        if not first:
+        if not first: #说明要移走的是正序第一个node.
             return head.next
         
         while first.next:

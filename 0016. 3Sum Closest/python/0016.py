@@ -4,13 +4,13 @@ Runtime: 116 ms, faster than 64.64% of Python3 online submissions for 3Sum Close
 Memory Usage: 13.2 MB, less than 33.86% of Python3 online submissions for 3Sum Closest.
 """
     def threeSumClosest(self, nums: List[int], target: int) -> int:
-        result=nums[0]+nums[1]+nums[2]
+        result = nums[0] + nums[1] + nums[2]
         nums.sort()
         for i in range(len(nums)):
-            l,r = i+1, len(nums)-1
+            l, r = i+1, len(nums)-1
             while l<r:
-                s=nums[i]+nums[l]+nums[r]
-                if s==target:
+                s = nums[i] + nums[l] + nums[r]
+                if s == target:
                     return s
                 if abs(s - target) < abs(result - target):
                     result = s

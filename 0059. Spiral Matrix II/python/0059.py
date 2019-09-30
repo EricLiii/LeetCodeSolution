@@ -46,6 +46,8 @@ class Solution_2:
 Runtime: 36 ms, faster than 81.69% of Python3 online submissions for Spiral Matrix II.
 Memory Usage: 14 MB, less than 5.94% of Python3 online submissions for Spiral Matrix II.
 
+记这个!
+
 Idea: 
 Same idea with solution 1, but more concise!
 """

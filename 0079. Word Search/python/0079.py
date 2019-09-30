@@ -58,10 +58,10 @@ Idea:
             original, board[i][j] = board[i][j], '-'
             spreaded = False
             for x, y in ((i-1, j), (i+1, j), (i, j-1), (i, j+1)):
-                if (0<=x<R and 0<=y<C and w[0]==board[x][y]
-                        and spread(x, y, w[1:])):
-                    spreaded = True
-                    break  #及时退出
+                if (0 <= x< R and 0 <= y < C and w[0] == board[x][y] and spread(x, y, w[1:])):
+                    #spreaded = True
+                    #break  
+                    return True #及时退出
             board[i][j] = original
             return spreaded
 

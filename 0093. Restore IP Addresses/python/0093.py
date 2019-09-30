@@ -41,7 +41,7 @@ link: https://leetcode.com/problems/restore-ip-addresses/discuss/30972/WHO-CAN-B
             for b in range(1, 4):
                 for c in range(1, 4):
                     d = len(s)-a-b-c
-                    if 0 < d <=3 and a+b+c+d == len(s):
+                    if 0 < d <=3: # and a+b+c+d == len(s):
                         A, B, C, D = int(s[:a]), int(s[a:a+b]), int(s[a+b:a+b+c]), int(s[a+b+c:])
                         if A <= 255 and B <= 255 and C <= 255 and D <= 255:
                             tmp = str(A) + "." + str(B) + "." + str(C) + "." + str(D)

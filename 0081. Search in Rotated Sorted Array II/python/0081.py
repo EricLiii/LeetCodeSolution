@@ -64,6 +64,15 @@ and if so, we can move left and right both towards the middle by 1. and repeat.
         while l < mid and mid < h and arr[l] == arr[mid] == arr[h]:
             l += 1
             h -= 1
+        """
+        或者把上面的替换成这段.这个比较好记.
+        其实所有检查的目的都是为了避免nums[l] == nums[mid]或者nums[mid] == nums[r]对是否是排序的检查的干扰.
+        所以可以只查nums[l] == nums[mid]，也可以只查nums[mid] == nums[r]，还可以同时查arr[l] == arr[mid] == arr[h]。
+        while l < mid and nums[l] == nums[mid]:
+            l += 1
+        while mid < r and nums[mid] == nums[r]:
+            r -= 1
+        """
         # If arr[l...mid] is sorted  
         if arr[l] <= arr[mid]: 
 

@@ -29,7 +29,8 @@ Memory Usage: 13.3 MB, less than 49.80% of Python3 online submissions for 4Sum.
                 else:
                     r -= 1
         else:
-            for i in range(0, len(nums)-N+1):   # careful about range
+               # careful about range, 但是range(len(nums))也是可以通过的。
+            for i in range(0, len(nums)-N+1):   
                 if target < nums[i]*N or target > nums[-1]*N:  # take advantages of sorted list
                     break
                 if i == 0 or i > 0 and nums[i-1] != nums[i]:  # recursively reduce N
@@ -119,3 +120,41 @@ Memory Usage: 13.3 MB, less than 49.77% of Python3 online submissions for 4Sum.
                 else:
                     r -= 1
         return res
+        
+        
+class Solution_4:
+"""
+Runtime: 116 ms, faster than 81.63% of Python3 online submissions for 4Sum.
+Memory Usage: 14 MB, less than 7.14% of Python3 online submissions for 4Sum.
+"""
+    def fourSum(self, nums: List[int], target: int) -> List[List[int]]:
+        nums.sort()
+        self.res = []
+        self.nSum(nums, target, [], 4)
+        return self.res
+        
+    def nSum(self, nums, target, path, n):
+        if n < 2:
+            return
+        elif n == 2:
+            l, r = 0, len(nums)-1
+            while l < r:
+                if nums[l] + nums[r] == target:
+                    self.res.append(path + [nums[l]] + [nums[r]])
+                    l += 1
+                    r -= 1
+                    while l < r and nums[l] == nums[l-1]:
+                        l += 1
+                    while l < r and nums[r] == nums[r+1]:
+                        r -= 1
+                elif nums[l] + nums[r] < target:
+                    l += 1
+                else:
+                    r -= 1
+        elif n > 2:
+            for i in range(len(nums)):
+                if target < nums[i]*n or target > nums[-1]*n: #必不可少的.
+                    break
+                if i == 0 or i > 0 and nums[i-1] != nums[i]:
+                    self.nSum(nums[i+1:], target - nums[i], path + [nums[i]], n - 1)
+        return

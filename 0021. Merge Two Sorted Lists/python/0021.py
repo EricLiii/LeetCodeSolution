@@ -89,3 +89,24 @@ Iteratively. But in-place.
             cur = cur.next
         cur.next = l1 or l2
         return dummy.next
+        
+class Solution_4:
+"""
+Author: Zefeng
+
+Runtime: 44 ms, faster than 64.21% of Python3 online submissions for Merge Two Sorted Lists.
+Memory Usage: 13.6 MB, less than 6.61% of Python3 online submissions for Merge Two Sorted Lists.
+"""
+    def mergeTwoLists(self, l1: ListNode, l2: ListNode) -> ListNode:
+        dummy = head = ListNode(0)
+        while l1 and l2:
+            if l1.val > l2.val:
+                head.next = ListNode(l2.val)
+                l2 = l2.next
+            else:
+                head.next = ListNode(l1.val)
+                l1 = l1.next
+            head = head.next
+        if l1 or l2:
+            head.next = l1 or l2
+        return dummy.next

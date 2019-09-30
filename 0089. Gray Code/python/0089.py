@@ -5,6 +5,8 @@ Memory Usage: 14 MB, less than 5.26% of Python3 online submissions for Gray Code
 
 Link: https://leetcode.com/problems/gray-code/discuss/29893/One-liner-Python-solution-(with-demo-in-comments)
 
+https://leetcode.com/problems/gray-code/discuss/29882/What-if-I-have-no-knowledge-over-Gray-Code-before
+
 这是gray code的一个公式.
 """
     def grayCode(self, n: int) -> List[int]:

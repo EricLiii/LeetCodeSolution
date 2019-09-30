@@ -21,4 +21,6 @@ Calculate the path sum for first row and column respectively.
 class Solution:
 """
 还有一种可以只用O(n)空间的算法，暂时懒得想了，以后补上!!!
+
+Link: https://leetcode.com/problems/minimum-path-sum/discuss/23613/Python-solutions-(O(m*n)-O(n)-space).
 """

@@ -35,3 +35,22 @@ Memory Usage: 13.8 MB, less than 5.26% of Python3 online submissions for Length 
             if s[i] == " ":
                 return len(s[i+1:])
         return len(s)
+        
+class Solution_3:
+"""
+Author: Zefeng
+
+Runtime: 32 ms, faster than 90.04% of Python3 online submissions for Length of Last Word.
+Memory Usage: 13.8 MB, less than 5.26% of Python3 online submissions for Length of Last Word.
+
+比solution_2更简洁.
+"""
+    def lengthOfLastWord(self, s: str) -> int:
+        s = s.strip()
+        if not s:
+            return 0
+        s = s[::-1]
+        for i in range(len(s)):
+            if s[i] == " ":
+                return i
+        return len(s)
