@@ -26,3 +26,26 @@ class Solution_2:
             return 0
         return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right)) # not None equals to True
  
+class Solution:
+"""
+Author: Zefeng
+
+Runtime: 44 ms, faster than 93.29% of Python3 online submissions for Maximum Depth of Binary Tree.
+Memory Usage: 16 MB, less than 12.50% of Python3 online submissions for Maximum Depth of Binary Tree.
+"""
+    def maxDepth(self, root: TreeNode) -> int:
+        if not root:
+            return 0
+        res = [1]
+        self.helper(root, 1, res)
+        return max(res)
+        
+    def helper(self, node, depth, res):
+        if not node:
+            return 
+        if not node.left and not node.right:
+            res.append(depth)
+            return
+        self.helper(node.left, depth+1, res)
+        self.helper(node.right, depth+1, res)
+        return

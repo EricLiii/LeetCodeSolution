@@ -7,18 +7,18 @@
 
 class Solution_1:
     def levelOrderBottom(self, root: TreeNode) -> List[List[int]]:
-        traversal=[]
-        self.inorder(root,0,traversal)
+        traversal = []
+        self.inorder(root, 0, traversal)
         return traversal[::-1]
     
-    def inorder(self,node,depth,traversal):
+    def inorder(self, node, depth, traversal):
         if not node:
             return
-        if len(traversal)==depth:
+        if len(traversal) == depth:
             traversal.append([])
-        self.inorder(node.left,depth+1,traversal)
+        self.inorder(node.left, depth+1, traversal)
         traversal[depth].append(node.val)
-        self.inorder(node.right,depth+1,traversal)
+        self.inorder(node.right, depth+1, traversal)
         
 class Solution_2:
     def levelOrderBottom(self, root: TreeNode) -> List[List[int]]:

@@ -55,6 +55,8 @@ Improved solution_1 according to comments. But still can be improved.
             # 这样算法就快很多了.详情见Solution_3.
             root = TreeNode(inorder[ind])
             root.left = self.buildTree(preorder, inorder[0:ind])
+            #这里可以直接用preorder的原因是：在上一行里，preorder已经做过pop(0)了，
+            #所以下一行的preorder[0]一定存在于inorder.
             root.right = self.buildTree(preorder, inorder[ind+1:])
             return root
 
@@ -132,3 +134,23 @@ Idea:
                 stack[-1].left = curr 
             stack.append(curr)
         return root
+        
+class Solution_5:
+"""
+Author: Zefeng
+
+Runtime: 456 ms, faster than 8.37% of Python3 online submissions for Construct Binary Tree from Preorder and Inorder Traversal.
+Memory Usage: 88.5 MB, less than 13.16% of Python3 online submissions for Construct Binary Tree from Preorder and Inorder Traversal.
+
+太慢了.
+"""
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
+        if not preorder and inorder:
+            return 
+        for i in range(len(inorder)):
+            if inorder[i] == preorder[0]:
+                root = TreeNode(preorder[0])
+                root.left = self.buildTree(preorder[1:], inorder[:i])
+                root.right = self.buildTree(preorder[len(inorder[:i])+1:], inorder[i+1:])
+                return root
+        return None
