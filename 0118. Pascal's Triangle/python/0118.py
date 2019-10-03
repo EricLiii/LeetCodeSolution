@@ -54,10 +54,14 @@ Idea:
 2. map(lambda x, y: x+y, res[-1] + [0], [0] + res[-1]): "lambda x, y: x+y" is the lambda function, it requires two arguments;
                                                         "res[-1] + [0]" is the first argument for lambda function;
                                                         "[0] + res[-1]" is the second argument for lambda function.
+这道题主要记算法，即0121 和 1210 对应位相加即使下一行结果1331.
+
+记这个!!!
 """
     def generate(self, numRows):
         res = [[1]]
         for i in range(1, numRows):
+            #这个lambda函数 将res[-1] + [0] 和 [0] + res[-1] 的对应位置相加.
             res.append(list((map(lambda x, y: x+y, res[-1] + [0], [0] + res[-1]))))
             # OR res += [list((map(lambda x, y: x+y, res[-1] + [0], [0] + res[-1])))]
         return res[:numRows] #这里考虑了edge case: input=0. 若input是0，应该返回[].

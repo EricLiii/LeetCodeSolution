@@ -34,6 +34,8 @@ Memory Usage: 14 MB, less than 8.70% of Python3 online submissions for Flatten B
 Link: https://leetcode.com/problems/flatten-binary-tree-to-linked-list/discuss/37154/8-lines-of-python-solution-(reverse-preorder-traversal)
 
 这是真正的in-place,O(1)空间.
+
+最好记这个，上面那个没含金量.
 """
     def flatten(self, root: TreeNode) -> None:
         """

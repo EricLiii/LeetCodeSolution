@@ -35,7 +35,8 @@ Constant extra space.
     def connect(self, root: 'Node') -> 'Node':
         head = Node(0)
         head.next = root
-        tail = dummy = Node(0)
+        #开始时tail和dummy指向同一位置p，随着对tail的操作，p的属性也会变化，但是dummy仍然指向起始位置.
+        tail = dummy = Node(0) 
         while root:
             tail.next = root.left
             if tail.next:

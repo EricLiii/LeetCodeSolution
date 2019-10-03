@@ -34,13 +34,13 @@ bfs + queue
         res = []
         queue = [(root, root.val, [root.val])]
         while queue:
-            curr, val, ls = queue.pop(0) #从0处pop，所以是bfs.
+            curr, val, path = queue.pop(0) #从0处pop，所以是bfs.
             if not curr.left and not curr.right and val == sum:
-                res.append(ls)
+                res.append(path)
             if curr.left:
-                queue.append((curr.left, val+curr.left.val, ls+[curr.left.val])) #val加
+                queue.append((curr.left, val+curr.left.val, path+[curr.left.val])) #val加
             if curr.right:
-                queue.append((curr.right, val+curr.right.val, ls+[curr.right.val]))
+                queue.append((curr.right, val+curr.right.val, path+[curr.right.val]))
         return res
         
 class Solution_3:
@@ -59,7 +59,7 @@ dfs + stack
             curr, val, ls = stack.pop() #从末尾pop，所以是dfs.
             if not curr.left and not curr.right and val == 0:
                 res.append(ls)
-            if curr.right:
+            if curr.right: #先左先右没关系.
                 stack.append((curr.right, val-curr.right.val, ls+[curr.right.val])) #val减
             if curr.left:
                 stack.append((curr.left, val-curr.left.val, ls+[curr.left.val]))
