@@ -21,9 +21,10 @@ Runtime: 40 ms, faster than 23.58% of Python3 online submissions for Unique Path
 Memory Usage: 13.9 MB, less than 5.18% of Python3 online submissions for Unique Paths.
 """
     def uniquePaths(self, m: int, n: int) -> int:
+        #这里只要保证matrix的第一行和第一列全是1就行，其他位置的值在后面都会更新.
         matrix = [[1 for row in range(n)] for col in range(m)]
         # 因为只能向右走或者向下走，所以第一行的元素到第二行对应元素只有一种方法;
-        # 同理第一列元素到第二列独赢元素也只有一种方法;
+        # 同理第一列元素到第二列对应元素也只有一种方法;
         # 因此range可以从1开始计。
         for i in range(1, m):
             for j in range(1, n):

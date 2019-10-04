@@ -42,11 +42,18 @@ Idea:
     so we need to find the largest sub array sum to get the most profit
     
     其实就是将原数列[a0,....,a6]转化为新数列[b0,....,b6],求这个新数列的Maximum Subarray.
+    
+    
+    
+Link: https://www.cnblogs.com/coderJiebao/p/Algorithmofnotes27.html
+这个链接讲的时最大子数列之和，解释得比较清楚.
 """
     def maxProfit(self, prices: List[int]) -> int:
         max_curr, max_sofar = 0, 0
         for i in range(1, len(prices)):
             diff = prices[i] - prices[i-1]
+            #这里也不一定非要与0作比较
+            #max_curr = max(diff, max_curr + diff) 也是可以的.
             max_curr = max(0, max_curr + diff)
             max_sofar = max(max_curr, max_sofar)
         return max_sofar

@@ -33,5 +33,23 @@ Idea:
 更简洁。
 """
     def isPalindrome(self, s: str) -> bool:
+        #这个简洁写法（列表解析式）要记住.
         s = [c.lower() for c in s if c.isalnum()]
+        return s == s[::-1]
+        
+class Solution_3:
+"""
+Runtime: 224 ms, faster than 5.26% of Python3 online submissions for Valid Palindrome.
+Memory Usage: 14.6 MB, less than 21.43% of Python3 online submissions for Valid Palindrome.
+
+思路都是一样的，但是这个solution慢得离谱. 可能是因为 s = s[:i] + s[i+1:].
+"""
+    def isPalindrome(self, s: str) -> bool:
+        s = s.lower()
+        i = 0
+        while i < len(s):
+            if not s[i].isalpha() and not s[i].isdigit():
+                s = s[:i] + s[i+1:]
+            else:
+                i += 1
         return s == s[::-1]
