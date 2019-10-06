@@ -16,6 +16,7 @@ https://leetcode.com/problems/word-ladder/discuss/157376/Python-(BFS)-tm
         alpha = string.ascii_lowercase  #'abcd...z'  也有不需要遍历26个字母的方法，以后有时间细看.
         while q:
             word, length = q.popleft()
+            #如何保证最短？因为是bfs，所以只要word == endWord，那么就是最短.
             if word == endWord:
                 return length
             

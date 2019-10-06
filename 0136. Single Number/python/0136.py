@@ -48,3 +48,13 @@ Idea:
         for i in range(1, len(nums)): #这里注意，从1开始。
             nums[0] ^= nums[i]
         return nums[0]
+        
+class Solution_4:
+"""
+Runtime: 100 ms, faster than 70.52% of Python3 online submissions for Single Number.
+Memory Usage: 16.3 MB, less than 6.56% of Python3 online submissions for Single Number.
+
+记solution_3 and 4.
+"""
+    def singleNumber(self, nums: List[int]) -> int:
+        return 2 * sum(set(nums)) - sum(nums)

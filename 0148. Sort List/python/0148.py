@@ -33,6 +33,8 @@ class Solution_2:
 """
 Runtime: 224 ms, faster than 81.02% of Python3 online submissions for Sort List.
 Memory Usage: 21.1 MB, less than 16.28% of Python3 online submissions for Sort List.
+
+TODO: 时间复杂度为什么是nlog(n)呢？明明只做了一次对半分.
 """
     def sortList(self, head: ListNode) -> ListNode:
         if not head or not head.next:

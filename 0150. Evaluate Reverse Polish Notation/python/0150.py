@@ -18,7 +18,11 @@ Memory Usage: 14.1 MB, less than 8.70% of Python3 online submissions for Evaluat
                 #e.g., 1/-2 = -0.5, 1//-2 = -1, 这显然不是truncate to zero.
                 #      而 int(1/-2) = 0, 符合要求.
                 stack.append(int(stack.pop(-2)/stack.pop(-1)))
-            else:
+            else: 
+                #先判断运算符号，然后else就一定是数字，这样就避免了使用isdigit().
+                #isdigit()的问题就是"-11".isdigit()是False. 因此需要先检查sign.
+                #而int("-11")= -11,无需检查sign.
+                
                 #每个数字都在这里进行int转换了,所以在上面的计算时不再需要转换.
                 stack.append(int(s))
         return stack.pop()

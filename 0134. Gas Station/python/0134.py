@@ -4,6 +4,8 @@ Runtime: 60 ms, faster than 84.71% of Python3 online submissions for Gas Station
 Memory Usage: 14.8 MB, less than 6.25% of Python3 online submissions for Gas Station.
 
 Link: https://www.cnblogs.com/boring09/p/4248482.html
+
+Link: https://blog.csdn.net/qq508618087/article/details/50990076 这个链接讲得比较清楚.
 """
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
         start, tank, total = 0, 0, 0
@@ -12,6 +14,10 @@ Link: https://www.cnblogs.com/boring09/p/4248482.html
             if tank < 0:
                 start = i+1
                 #total是从i=0开始的油量积累，可能为正，可能为负.
+                #如果total<0,说明从i=0开始的gas之和是小于cost之和的.
                 total += tank
                 tank = 0
-        return -1 if total+tank<0 else start
+        #if total + tank < 0 判断从最新的start开始计算之后,tank能否填补之前的亏空.
+        #如果total + tank >= 0,说明从最新的start开始直到i=len(gas)-1,剩余的gas足够支持从i=0走到start-1.
+        #这就说明从start开始走是可行的.
+        return -1 if total + tank < 0 else start

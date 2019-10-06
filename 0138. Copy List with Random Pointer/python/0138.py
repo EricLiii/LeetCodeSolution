@@ -18,6 +18,9 @@ Memory Usage: 16.2 MB, less than 5.17% of Python3 online submissions for Copy Li
             dic[m] = Node(m.val, None, None)
             m = m.next
         while n:
+            #这里用get是因为n.next或者n.random可能为None.
+            #这种情况下dic.get返回的就是None.
+            #如果在while n: 之前执行dic[None] = None,下面就不用get了，直接dic[n.next]即可.
             dic[n].next = dic.get(n.next)
             dic[n].random = dic.get(n.random)
             n = n.next
