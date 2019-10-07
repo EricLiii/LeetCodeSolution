@@ -48,3 +48,13 @@ Link: https://www.jianshu.com/p/1da12a42a41d
                 return nums[i]
             else:
                 i += 3
+                
+class Solution_3:
+"""
+Runtime: 64 ms, faster than 90.07% of Python3 online submissions for Single Number II.
+Memory Usage: 15.6 MB, less than 6.67% of Python3 online submissions for Single Number II.
+
+0136和0137都通用的方法,实在想不出来位操作的时候可以用这个.
+"""
+    def singleNumber(self, nums: List[int]) -> int:
+        return int((3 * sum(set(nums)) - sum(nums)) / 2)
