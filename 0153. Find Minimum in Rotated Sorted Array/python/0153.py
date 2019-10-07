@@ -16,9 +16,12 @@ Recursive solution.
         l, mid, r = 0, len(nums)//2, len(nums)-1
         if nums[0] < nums[mid]:
             minn = nums[0]
+            #这里必须要判断minn和self.findMin(nums[mid+1:]谁更小.
+            #因为当input是[3,1,2]的时候,如果直接返回self.findMin(nums[mid+1:]),结果是3而不是1.
             return min(minn, self.findMin(nums[mid+1:]))
         else:
             minn = nums[mid+1]
+            #此处同理.
             return min(minn, self.findMin(nums[:mid+1]))
             
 class Solution_2:

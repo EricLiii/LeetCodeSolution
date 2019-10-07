@@ -24,6 +24,8 @@ Runtime: 64 ms, faster than 71.15% of Python3 online submissions for Maximum Pro
 Memory Usage: 13.9 MB, less than 26.87% of Python3 online submissions for Maximum Product Subarray.
 
 Same with solution_1.
+
+记这个!!!
 """
     def maxProduct(self, nums: List[int]) -> int:
         if len(nums) == 1:
@@ -35,5 +37,6 @@ Same with solution_1.
                 max_p, min_p = min_p, max_p
             max_p = max(max_p*nums[i], nums[i])
             min_p = min(min_p*nums[i], nums[i])
+            #其实 max_sofar = max(max_p, max_sofar) 就足够了.
             max_sofar = max(max_p, min_p, max_sofar)
         return max_sofar

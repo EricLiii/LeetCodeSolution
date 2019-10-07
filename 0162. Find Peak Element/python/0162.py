@@ -5,7 +5,7 @@ Memory Usage: 13.9 MB, less than 5.48% of Python3 online submissions for Find Pe
 
 Idea:
 Link:https://leetcode.com/problems/find-peak-element/discuss/50259/My-clean-and-readable-python-solution
- If an element(not the right-most one) is smaller than its right neighbor, then there must be a peak element on its right, because the elements on its right is either 
+ If an element(!!not the right-most one!!) is smaller than its right neighbor, then there must be a peak element on its right, because the elements on its right is either 
    1. always increasing  -> the right-most element is the peak
    2. always decreasing  -> the left-most element is the peak
    3. first increasing then decreasing -> the pivot point is the peak

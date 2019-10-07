@@ -48,11 +48,16 @@ Link: https://www.cnblogs.com/lightwindy/p/8512214.html
 
     def push(self, x: int) -> None:
         if x <= self.min:
+            #这时x是新的最小值,因此先在stack末尾加一个当前最小值，作为最近的旧的最小值的备份.
+            #将x设为当前最小值.
+            #当调用pop后弹出的是当前最小值时，stack会再弹出一个值。
+            #而这个值就是最近的旧的最小值，将其设为当前最小值.
             self.stack.append(self.min)
             self.min = x
         self.stack.append(x)
 
     def pop(self) -> None:
+        #有两次pop(),执行完pop(self)函数后stack总共弹出两个成员.
         if self.stack.pop() == self.min:
             self.min = self.stack.pop()
             

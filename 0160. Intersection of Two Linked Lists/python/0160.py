@@ -14,6 +14,8 @@ Idea:
 
 这样就能控制访问 A 和 B 两个链表的指针能同时访问到交点
 
+
+记这个!!!
 """
     def getIntersectionNode(self, headA, headB):
         """

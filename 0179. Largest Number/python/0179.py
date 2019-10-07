@@ -6,6 +6,9 @@ Runtime: 48 ms, faster than 60.57% of Python3 online submissions for Largest Num
 Memory Usage: 13.7 MB, less than 7.14% of Python3 online submissions for Largest Number.
 
 Link: https://leetcode.com/problems/largest-number/discuss/53270/Python-simple-solution-in-4-lines
+
+
+还是没太懂key的用法，以后有时间再看看.https://juejin.im/post/5a3b7ba06fb9a045104aa988
 """
     def largestNumber(self, nums):
         """

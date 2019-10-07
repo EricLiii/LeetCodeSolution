@@ -24,3 +24,25 @@ Memory Usage: 13.9 MB, less than 8.33% of Python3 online submissions for Compare
         但是要注意solution2是不能AC的，一是因为v1,v2是两个map的object，需要list()遍历取值;
         二是python3中已经没有cmp函数了。
         """
+
+class Solution_2:
+"""
+Author: Zefeng
+
+Runtime: 32 ms, faster than 90.31% of Python3 online submissions for Compare Version Numbers.
+Memory Usage: 13.9 MB, less than 8.33% of Python3 online submissions for Compare Version Numbers.
+"""
+    def compareVersion(self, version1: str, version2: str) -> int:
+        v1, v2 = version1.split("."), version2.split(".")
+        while v1 and v2:
+            a, b = int(v1.pop(0)), int(v2.pop(0))
+            if a < b:
+                return -1
+            elif a > b:
+                return 1
+        if not v1 and not v2:
+            return 0
+        if not v1 and int("".join(v2)) == 0 or not v2 and int("".join(v1)) == 0:
+            return 0
+        else:
+            return 1 if v1 else -1
