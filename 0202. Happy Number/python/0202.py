@@ -33,7 +33,7 @@ Memory Usage: 13.7 MB, less than 5.26% of Python3 online submissions for Happy N
         mem = set()
         while n != 1:
             n = sum([int(i) ** 2 for i in str(n)])
-            if n in mem:
+            if n in mem: #说明已经形成loop,但是不是以1为结尾，所以return False.
                 return False
             else:
                 mem.add(n)
