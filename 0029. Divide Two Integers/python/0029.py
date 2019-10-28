@@ -38,6 +38,7 @@ Memory Usage: 13.6 MB, less than 5.62% of Python3 online submissions for Divide 
 """
     def divide(self, dividend: int, divisor: int) -> int:
         #记这种判断语句。
+        #同时要注意, (dividend < 0 is divisor < 0)的写法是错的，必须分别用括号括起来.
         positive = (dividend < 0) is (divisor < 0)
         
         dividend, divisor = abs(dividend), abs(divisor)

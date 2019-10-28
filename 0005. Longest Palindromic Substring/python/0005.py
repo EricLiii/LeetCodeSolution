@@ -7,7 +7,7 @@ Fast.
 
 Link: https://leetcode.com/problems/longest-palindromic-substring/discuss/2925/Python-O(n2)-method-with-some-optimization-88ms.
 
-因为每次maxlen的增加只会是1或者2，对应的start可能是i - maxLen或者i - maxLen - 1.
+因为每次maxlen的增加只会是1或者2，对应的start可能是(i-maxLen-1)或者(i-maxLen).
 因此情况a先判断在i-maxLen可以减1的情况下是否有新的最长回文。
 情况b则是判断在i-maxLen不能减1的情况下是否有新的最长回文.
 """
@@ -17,8 +17,10 @@ Link: https://leetcode.com/problems/longest-palindromic-substring/discuss/2925/P
         maxLen = 1
         start = 0
         for i in range(len(s)):
+            # 从i-maxLen开始计其实就是增加1.
+            # 从i-maxLen-1开始计就是增加2.
             #a
-        	if i - maxLen >= 1 and s[i-maxLen-1:i+1] == s[i-maxLen-1:i+1][::-1]:
+        	if i - maxLen - 1 >= 0 and s[i-maxLen-1:i+1] == s[i-maxLen-1:i+1][::-1]:
         		start = i - maxLen - 1
         		maxLen += 2
             #b
