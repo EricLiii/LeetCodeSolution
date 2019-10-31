@@ -14,7 +14,7 @@ Idea:
     def canJump(self, nums: List[int]) -> bool:
         max_right = 0
         for i in range(len(nums)):
-            if max_right < i:
+            if max_right < i: #这一行不能少，是关键.
                 break
             max_right = max(nums[i]+i, max_right)
         return max_right >= len(nums)-1
