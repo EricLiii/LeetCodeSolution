@@ -45,6 +45,9 @@ Link: https://leetcode.com/problems/lru-cache/discuss/202067/Python-or-O(1)-tm-1
 https://www.youtube.com/watch?v=S6IfqDXWa10
 
 第一个链接采用将新的node放在后面，而我的code是将新的node放在前面，和第二个视频链接一致。
+
+这道题主要就是要知道双向链表的插入、删除操作的时间复杂度是O(1)的。
+注意是双向，不是单向.单向链表的插入和删除是O(n)的。
 """
     def __init__(self, capacity: int):
         self.dic = {}
@@ -102,3 +105,9 @@ https://www.youtube.com/watch?v=S6IfqDXWa10
         next = node.next
         prev.next = next
         next.prev = prev
+class Node:
+    def __init__(self, k, v):
+        self.key = k
+        self.val = v
+        self.prev = None
+        self.next = None

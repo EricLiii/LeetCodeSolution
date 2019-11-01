@@ -46,7 +46,7 @@ Idea:
     
     
 Link: https://www.cnblogs.com/coderJiebao/p/Algorithmofnotes27.html
-这个链接讲的时最大子数列之和，解释得比较清楚.
+这个链接讲的是最大子数列之和，解释得比较清楚.
 """
     def maxProfit(self, prices: List[int]) -> int:
         max_curr, max_sofar = 0, 0

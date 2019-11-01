@@ -70,3 +70,29 @@ Memory Usage: 13.9 MB, less than 20.97% of Python3 online submissions for Binary
             stack = tmp
             res.append(tmp2)
         return res
+
+class Solution_4:
+"""
+Author: Zefeng
+Runtime: 40 ms, faster than 81.73% of Python3 online submissions for Binary Tree Level Order Traversal.
+Memory Usage: 14.5 MB, less than 6.45% of Python3 online submissions for Binary Tree Level Order Traversal.
+
+递归.
+"""
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        if not root:
+            return []
+        res = [[]]
+        self.utils(root, 0, res)
+        return res
+    
+    def utils(self, node, depth, res):
+        if not node:
+            return
+        if len(res) < depth+1:
+            res.append([])
+        res[depth].append(node.val)
+        if node.left:
+            self.utils(node.left, depth+1, res)
+        if node.right:
+            self.utils(node.right, depth+1, res)

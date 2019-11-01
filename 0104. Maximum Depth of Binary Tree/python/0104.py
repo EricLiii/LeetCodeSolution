@@ -21,12 +21,17 @@ class Solution_1:
         return len
         
 class Solution_2:
+"""
+牛逼.
+
+这个可以记.
+"""
     def maxDepth(self, root: TreeNode) -> int:
         if not root:
             return 0
         return 1 + max(self.maxDepth(root.left), self.maxDepth(root.right)) # not None equals to True
  
-class Solution:
+class Solution_3:
 """
 Author: Zefeng
 
@@ -49,3 +54,30 @@ Memory Usage: 16 MB, less than 12.50% of Python3 online submissions for Maximum 
         self.helper(node.left, depth+1, res)
         self.helper(node.right, depth+1, res)
         return
+        
+class Solution_4:
+"""
+Author: Zefeng
+
+Runtime: 48 ms, faster than 77.72% of Python3 online submissions for Maximum Depth of Binary Tree.
+Memory Usage: 15 MB, less than 90.62% of Python3 online submissions for Maximum Depth of Binary Tree.
+
+"""
+    def maxDepth(self, root: TreeNode) -> int:
+        if not root:
+            return 0
+        stack = [root]
+        depth = 1
+        while stack:
+            tmp = []
+            for node in stack:
+                if node.left:
+                    tmp.append(node.left)
+                if node.right:
+                    tmp.append(node.right)
+            if tmp:
+                depth += 1
+            else:
+                return depth
+            stack = tmp
+        return depth
