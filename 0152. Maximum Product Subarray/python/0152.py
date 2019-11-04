@@ -25,12 +25,15 @@ Memory Usage: 13.9 MB, less than 26.87% of Python3 online submissions for Maximu
 
 Same with solution_1.
 
+需要保留的值是max_sofar, max_cur, min_cur.
+
 记这个!!!
 """
     def maxProduct(self, nums: List[int]) -> int:
         if len(nums) == 1:
             return nums[0]
         max_sofar = max_p = min_p = nums[0]
+        #因为将这三个值都初始化为第0项，所以下面要从1开始,否则会重复乘自己.
         for i in range(1, len(nums)):
             # 做一个判断，之后就不用再分配一个空间储存tmp了.
             if nums[i] < 0:

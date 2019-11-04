@@ -14,6 +14,9 @@ Link:https://leetcode.com/problems/find-peak-element/discuss/50259/My-clean-and-
    Therefore, we can find the peak only on its right elements(cut the array to half)
 
    The same idea applies to that an element(not the left-most one) is smaller than its left neighbor.
+   
+   
+   题目中You may imagine that nums[-1] = nums[n] = -∞.的意思是最左端和最右端的元素均无限小.因此必然存在峰值.
 """
     def findPeakElement(self, nums: List[int]) -> int:
         left = 0
@@ -26,6 +29,8 @@ Link:https://leetcode.com/problems/find-peak-element/discuss/50259/My-clean-and-
 
             if nums[mid] < nums[mid+1]:
                 left = mid+1
+            # 正因两端元素无限小，所以nums[mid] == nums[mid+1]时可以right=mid-1.
+            # 其实当nums[mid] == nums[mid+1]时也可以left=mid+1，一样通过.
             else:
                 right = mid-1
 
