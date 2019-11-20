@@ -23,6 +23,27 @@ Memory Usage: 13.9 MB, less than 9.09% of Python3 online submissions for House R
 """
     def rob(self, nums: List[int]) -> int:
         prep, pre = 0, 0
+        # 这里len(nums)+2是为了避免判断nums的长度，后面用nums[i-2],一步到位.更简洁!!!
         for i in range(2, len(nums)+2):
             pre, prep = max(pre, prep + nums[i-2]), pre
+        return pre
+        
+class Solution_3:
+"""
+Runtime: 36 ms, faster than 81.62% of Python3 online submissions for House Robber.
+Memory Usage: 13.6 MB, less than 9.09% of Python3 online submissions for House Robber.
+
+
+"""
+    def rob(self, nums: List[int]) -> int:
+        if len(nums) == 0:
+            return 0
+        if len(nums) == 1:
+            return nums[0]
+        if len(nums) == 2:
+            return max(nums)
+        prev, pre = nums[0], max(nums[0], nums[1])
+        #这里因为判断了nums的长度,所以后面可以直接用nums[i].
+        for i in range(2, len(nums)):
+            prev, pre = pre, max(pre, nums[i]+prev)
         return pre

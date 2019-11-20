@@ -20,4 +20,5 @@ Memory Usage: 11.8 MB, less than 39.29% of Python online submissions for Reverse
     # @param n, an integer
     # @return an integer
     def reverseBits(self, n):
+        #注意： 二进制前两个字符是'0b',所以要从第三个字符开始.
         return int(bin(n)[2:].zfill(32)[::-1], 2)

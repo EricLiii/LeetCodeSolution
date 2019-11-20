@@ -26,6 +26,7 @@ Link: https://www.cnblogs.com/ganganloveu/p/4170601.html
         res = ""
         if numerator == 0:
             return str(numerator)
+        # 第一个要注意的就是n和d的正负.
         if (numerator < 0) ^ (denominator < 0):
             res += "-"
         numerator = abs(numerator)
@@ -35,6 +36,7 @@ Link: https://www.cnblogs.com/ganganloveu/p/4170601.html
             return res
         res += "."
         r = numerator % denominator
+        # 第二个要注意的就是循环部分可能是一个数字，也可能是多个数字，所以要维护一个字典来记录重复出现的数字的位置.
         m = {}
         while r:
             if r in m:

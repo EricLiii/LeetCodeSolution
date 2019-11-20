@@ -45,6 +45,11 @@ Runtime: 132 ms, faster than 61.55% of Python3 online submissions for Construct 
 Memory Usage: 52.9 MB, less than 41.56% of Python3 online submissions for Construct Binary Tree from Preorder and Inorder Traversal.
 
 Improved solution_1 according to comments. But still can be improved.
+
+记这个!!
+
+IMPORTANT: 其实，这个题的重点是题中说明了没有重复数字出现。因此我们才能直接将preorder[1:]代入下一个递归，让下一个递归排除掉preorder中多余的元素。
+如果包含重复数字，本txt中的所有方法都是错的!!!!
 """
     def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
         if inorder:

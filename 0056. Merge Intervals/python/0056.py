@@ -41,6 +41,7 @@ with the previous one if they overlap, or add it to the output by itself if they
         # learn how to sort list with a key argument!
         # 'element' means the elements in intervals list.
         for item in sorted(intervals, key = lambda element: element[0]):
+        #其实直接intervals.sort()也可以实现按第一个元素的值来排列.
             if out and item[0] <= out[-1][1]:
                 out[-1][1] = max(out[-1][1], item[1])
             else:

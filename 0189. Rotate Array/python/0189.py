@@ -22,7 +22,7 @@ Memory Usage: 15.1 MB, less than 5.04% of Python3 online submissions for Rotate 
         """
         Do not return anything, modify nums in-place instead.
         """
-        #因为k有可能大于nums的长度，所以要先取余。不然输入以下case时会出错：
+        #!!最重要的部分!!: 因为k有可能大于nums的长度，所以要先取余。不然输入以下case时会出错：
         #   input=[1,2], k=3.
         #   Expected: [2,1], but output is [1,2]
         k %= len(nums)
