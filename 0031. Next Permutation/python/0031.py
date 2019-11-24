@@ -10,8 +10,9 @@ Actually, runtime varies a lot everytime I submit, from 36ms to 56ms.
 这道题主要就是记思路.
 
 Idea:
-1. 从末尾开始比较大小，当遇到当前项大于下一项时，记录下一项的正序位置(flag)。若遍历完都未发现flag项，则将整个list逆序排列。
+1. 从末尾开始比较大小，当遇到当前项大于下一项时，记录下一项的正序位置(flag)。注意，这里flag+1之后的项都是小于flag+1项的，且是递减的。若遍历完都未发现flag项，则将整个list逆序排列。
 2. 从flag+1项开始正序遍历，比较第j项与flag项。如果第j项小于或等于第flag项，则将flag项与j-1项互换，break。若不存在小于或等于flag项的j项，则将flag项与list最后一项互换。
+值得注意的
 3. 此时将nums从flag+1项开始倒序排列，break。
 """
     def nextPermutation(self, nums: List[int]) -> None:

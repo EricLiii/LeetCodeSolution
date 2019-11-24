@@ -14,7 +14,9 @@ class Solution_1:
         #也可以直接比较min(strs)和max(strs).
         strs.sort()
         first = strs[0]
-        last = strs[-1]
+        #必须跟最后一个比。假如跟第二个比，第一个和第二个的共同部分不一定是第一个和最后一个的共同部分。
+        #例："a","a","b"
+        last = strs[-1] 
         i = 0
         while i < len(first) and i < len(last) and first[i] == last[i]:
             i += 1

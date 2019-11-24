@@ -56,6 +56,31 @@ Memory Usage: 13.6 MB, less than 5.62% of Python3 online submissions for Divide 
             res = -res
         return min(max(-2147483648, res), 2147483647)
         
+class Solution_3:
+"""
+Runtime: 32 ms, faster than 88.90% of Python3 online submissions for Divide Two Integers.
+Memory Usage: 12.6 MB, less than 100.00% of Python3 online submissions for Divide Two Integers.
+"""
+    def divide(self, dividend: int, divisor: int) -> int:
+        if dividend == 0:
+            return 0
+        sign = 1 if (dividend > 0) is (divisor > 0) else -1
+        dividend, divisor = abs(dividend), abs(divisor)
+        
+        res = 0
+        exp = 1
+        while dividend:
+            if exp < 1:
+                break
+            if dividend >= divisor*exp:
+                dividend -= divisor*exp
+                res += exp
+                exp *= 2
+            else:
+                exp //= 2
+        res *= sign
+        return res if res >= -pow(2,31) and res <= pow(2,31)-1 else pow(2,31)-1
+        
 class BadSolution:      
 "this solution will exceed time limitation"
     def divide(dividend, divisor):
