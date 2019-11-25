@@ -57,7 +57,7 @@ Link: https://www.cnblogs.com/grandyang/p/4288151.html
         start = root
         while start.left:
             cur = start
-            while cur:
+            while cur: #这个while是先将每一层都连接好，然后用start=start.left跳到下一层.
                 cur.left.next = cur.right
                 if cur.next:
                     cur.right.next = cur.next.left

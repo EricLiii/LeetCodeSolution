@@ -49,3 +49,30 @@ Constant extra space.
                 tail = dummy
                 root = dummy.next
         return head.next
+
+
+class Solution_3:
+"""
+Runtime: 396 ms, faster than 55.05% of Python3 online submissions for Populating Next Right Pointers in Each Node II.
+Memory Usage: 49.7 MB, less than 8.33% of Python3 online submissions for Populating Next Right Pointers in Each Node II.
+
+https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/discuss/37811/Simple-solution-using-constant-space
+
+记这个，更清晰。
+"""
+    def connect(self, root: 'Node') -> 'Node':
+        dummy = Node(0)
+        dummy.next = root
+        while root:
+            tmp = Node(0)
+            cur = tmp
+            while root:
+                if root.left:
+                    cur.next = root.left # 当cur和tmp还是指向同一node的时候，此行或下行会将tmp指向root的下一层的node（如果有）
+                    cur = cur.next
+                if root.right:
+                    cur.next = root.right # 当cur和tmp还是指向同一node的时候，此行或上行会将tmp指向root的下一层的node（如果有）
+                    cur = cur.next
+                root = root.next
+            root = tmp.next #tmp指向的是root的下一层的第一个node.
+        return dummy.next

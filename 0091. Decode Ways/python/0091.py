@@ -20,7 +20,7 @@ Link：https://leetcode.com/problems/decode-ways/discuss/347813/readable-python-
             #注意两个if是并列的.
             if s[i] > "0":
                 tmp += pre
-            if s[i-1:i+1] < "27" and s[i-1:i+1] > "09":
+            if s[i-1:i+1] < "27" and s[i-1:i+1] > "09": #if i==0, s[-1:1]=[], so it's better to add (if i>0) condition
             #下面这行会加快计算速度.
             #if i > 0 and s[i-1:i+1] < "27" and s[i-1:i+1] > "09": 
                 tmp += prep

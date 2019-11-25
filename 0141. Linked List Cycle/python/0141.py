@@ -26,7 +26,7 @@ class Solution(object)_2:
             return False
         slow = head
         fast = head.next
-        while fast and fast.next and fast.next.next:
+        while fast and fast.next and fast.next.next: # 其实while fast and fast.next就足够了.
             # 这里就可以先做判断了，因为初始化不一样了。
             if slow is fast:
                 return True
