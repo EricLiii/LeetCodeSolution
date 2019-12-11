@@ -34,6 +34,9 @@ Memory Usage: 13.3 MB, less than 10.53% of Python3 online submissions for 3Sum C
         nums.sort()
         res = nums[0] + nums[1] + nums[len(nums)-1]
         for i in range(len(nums)-2):
+	    #加这行判断会更快
+	    if i > 0 and nums[i] == nums[i-1]:
+                continue
             l, r = i+1, len(nums)-1
             while l < r:
                 s = nums[i] + nums[l] +nums[r]
