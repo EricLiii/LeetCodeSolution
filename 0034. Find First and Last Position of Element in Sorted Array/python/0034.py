@@ -67,3 +67,34 @@ Link: https://leetcode.com/problems/find-first-and-last-position-of-element-in-s
             return l if nums[l] == target else -1
 
         return [bisect_left(nums, target), bisect_right(nums, target)]
+
+
+class Solution:
+"""
+https://leetcode.com/problems/find-first-and-last-position-of-element-in-sorted-array/discuss/14714/16-line-Python-solution-symmetric-and-clean-binary-search-52ms
+
+记这个不错
+"""
+    def searchRange(self, nums: List[int], target: int) -> List[int]:
+        def binarySearchLeft(A, x):
+            left, right = 0, len(A) - 1
+            while left <= right: #这里是<=
+                mid = (left + right) // 2
+                if x > A[mid]: #这里是>
+                    left = mid + 1
+                else: 
+                    right = mid - 1
+            return left
+
+        def binarySearchRight(A, x):
+            left, right = 0, len(A) - 1
+            while left <= right: #这里是<=
+                mid = (left + right) // 2
+                if x >= A[mid]: #这里是>=
+                    left = mid + 1
+                else: 
+                    right = mid - 1
+            return right
+        
+        left, right = binarySearchLeft(nums, target), binarySearchRight(nums, target)
+        return (left, right) if left <= right else [-1, -1]
