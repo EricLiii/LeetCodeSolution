@@ -34,14 +34,16 @@ class Solution_2:
 Runtime: 224 ms, faster than 81.02% of Python3 online submissions for Sort List.
 Memory Usage: 21.1 MB, less than 16.28% of Python3 online submissions for Sort List.
 
-TODO: 时间复杂度为什么是nlog(n)呢？明明只做了一次对半分.
+Q: 时间复杂度为什么是nlog(n)呢？明明只做了一次对半分.
+A: 因为 return self.merge(self.sortList(head), self.sortList(mid)) 又再一次调用了sortList函数，
+   所以会再次拆分。
 """
     def sortList(self, head: ListNode) -> ListNode:
         if not head or not head.next:
             return head
         
         slow = fast = head
-        #这里检查了fast.next和fast.next.next,所以在断开链表时要在slow之后断开。具体乐意自己画画图.
+        #这里检查了fast.next和fast.next.next,所以在断开链表时要在slow之后断开。具体示意自己画画图.
         while fast.next and fast.next.next:
             slow = slow.next
             fast = fast.next.next
