@@ -52,7 +52,10 @@ Link: https://leetcode.com/problems/permutation-sequence/discuss/22512/Share-my-
             #math.factorial(n)求的是每个数字分别做开头时permutation的个数。所以前面要减1.
             #例如，n=4，每个数字做开头有6组permutation。
             #其实跟我的思想时一致的，但是实现更简洁。
-            index, k = divmod(k, math.factorial(n)) #divmod操作减小了k的值，很简洁.
+            
+            #divmod操作减小了k的值，很简洁. 
+            #主要是为了防止当k大于n!时的情况,所以先保证k一定小于n!.
+            index, k = divmod(k, math.factorial(n)) 
             permutation += str(numbers[index])
             numbers.remove(numbers[index])
         return permutation
