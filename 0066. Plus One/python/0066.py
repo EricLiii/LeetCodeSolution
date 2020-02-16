@@ -82,3 +82,27 @@ Different method.
         if i==-1:
             return [1]+digits
         return digits[:i]+[digits[i]+1]+digits[i+1:]
+        
+class Solution:
+"""
+Zefeng
+
+Runtime: 24 ms, faster than 95.03% of Python3 online submissions for Plus One.
+Memory Usage: 12.8 MB, less than 100.00% of Python3 online submissions for Plus One.
+
+记这个！！！！
+"""
+    def plusOne(self, digits: List[int]) -> List[int]:
+        digits = [0] + digits
+        carry = 0
+        digits[-1] += 1
+        for i in range(len(digits)-1, -1, -1):
+            if digits[i] + carry > 9:
+                digits[i] = (digits[i] + carry) % 10
+                carry = 1
+            else:
+                digits[i] += carry
+                break
+        if digits[0] == 0:
+            digits = digits[1:]
+        return digits
