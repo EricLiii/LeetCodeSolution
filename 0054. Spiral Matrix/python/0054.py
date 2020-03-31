@@ -88,6 +88,10 @@ Memory Usage: 13.1 MB, less than 84.28% of Python3 online submissions for Spiral
         ret = []
         while matrix:
             ret += matrix.pop(0)
+            # 这里检测matric[0]是因为row.pop()只会将元素弹出，但有可能会留下[].
+            # 比如当matrix是[[1],[2],[3],[4]]的时候，
+            # row.pop()会留下[[],[],[],[]]
+            # 因此需要进行判断。
             if matrix and matrix[0]:
                 for row in matrix:
                     ret.append(row.pop())
