@@ -25,6 +25,8 @@ Memory Usage: 15.9 MB, less than 7.14% of Python3 online submissions for Populat
 Link: https://www.cnblogs.com/grandyang/p/4288151.html
 
 迭代. but not constant extra space. 但是同样适用于0117.
+
+不要记这个!
 """
     def connect(self, root: 'Node') -> 'Node':
         if not root: return None
@@ -40,6 +42,28 @@ Link: https://www.cnblogs.com/grandyang/p/4288151.html
                     queue.append(node.left)
                 if node.right:
                     queue.append(node.right)
+        return root
+        
+class Solution_2_Improve:
+"""
+Runtime: 64 ms, faster than 64.69% of Python3 online submissions for Populating Next Right Pointers in Each Node.
+Memory Usage: 15.4 MB, less than 35.71% of Python3 online submissions for Populating Next Right Pointers in Each Node.
+
+其实Solution_2不用计算siz
+但是仍然不是constant space, 不要记这个!
+"""
+    def connect(self, root: 'Node') -> 'Node':
+        if not root:
+            return
+        stack = [root]
+        while stack:
+            node = stack.pop(0)
+            if node.left:
+                node.left.next = node.right
+                stack.append(node.left)
+            if node.right:
+                node.right.next = node.next.left if node.next else None
+                stack.append(node.right)
         return root
         
         
@@ -63,4 +87,27 @@ Link: https://www.cnblogs.com/grandyang/p/4288151.html
                     cur.right.next = cur.next.left
                 cur = cur.next
             start = start.left
+        return root
+        
+class Solution_4:
+"""
+Runtime: 64 ms, faster than 64.69% of Python3 online submissions for Populating Next Right Pointers in Each Node.
+Memory Usage: 15.4 MB, less than 35.71% of Python3 online submissions for Populating Next Right Pointers in Each Node.
+
+记solution3或者4
+"""
+    def connect(self, root: 'Node') -> 'Node':
+        if not root:
+            return None
+        cur  = root
+        next = root.left
+
+        while cur.left :
+            cur.left.next = cur.right
+            if cur.next:
+                cur.right.next = cur.next.left
+                cur = cur.next
+            else:
+                cur = next
+                next = cur.left
         return root
