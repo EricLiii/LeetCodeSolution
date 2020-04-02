@@ -25,6 +25,7 @@ Idea:
 Same idea with solution_1, but more concise.
 
 这道题主要就是要明白存在 nums1 = [0], m = 0; nums2 = [1], n = 1 这个edge case.
+即nums1的大小正好等于nums2的大小.
 """
     def merge(self, nums1: List[int], m: int, nums2: List[int], n: int) -> None:
         """

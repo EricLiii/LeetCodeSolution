@@ -70,3 +70,36 @@ Idea:
                 if board[i][j] == word[0] and spread(i, j, word[1:]):
                     return True
         return False
+        
+class Solution_3:
+"""
+Zefeng
+自己写的，好像比solution_1简洁，但是没有2简洁.
+
+Runtime: 380 ms, faster than 44.34% of Python3 online submissions for Word Search.
+Memory Usage: 15.2 MB, less than 17.02% of Python3 online submissions for Word Search.
+"""
+    def exist(self, board: List[List[str]], word: str) -> bool:
+        for i in range(len(board)):
+            for j in range(len(board[0])):
+                if self.helper(board, [(i,j)], word):
+                    return True
+        return False
+        
+    def helper(self, board, stack, word):
+        if not word:
+            return True
+        while stack:
+            item = stack.pop()
+            i, j = item[0], item[1]
+            # 注意上界和下界都要比较
+            if 0 <= i <len(board) and 0 <= j < len(board[0]):
+                if board[i][j] == word[0]:
+                    temp = word[0]
+                    board[i][j] = '-'
+                    new = [(i+1,j), (i-1,j), (i,j+1), (i,j-1)]
+                    if self.helper(board, new, word[1:]):
+                        return True
+                    else:
+                        board[i][j] = temp
+        return False

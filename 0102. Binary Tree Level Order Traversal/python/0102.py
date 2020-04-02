@@ -96,3 +96,29 @@ Memory Usage: 14.5 MB, less than 6.45% of Python3 online submissions for Binary 
             self.utils(node.left, depth+1, res)
         if node.right:
             self.utils(node.right, depth+1, res)
+            
+class Solution_5:
+"""
+Zefeng
+
+Runtime: 32 ms, faster than 72.58% of Python3 online submissions for Binary Tree Level Order Traversal.
+Memory Usage: 14 MB, less than 16.13% of Python3 online submissions for Binary Tree Level Order Traversal.
+
+append时也把level加进去
+"""
+    def levelOrder(self, root: TreeNode) -> List[List[int]]:
+        if not root:
+            return []
+        
+        stack = [(root, 0)]
+        res = [[]]
+        while stack:
+            node, k = stack.pop(0)
+            if node.left:
+                stack.append((node.left, k+1))
+            if node.right:
+                stack.append((node.right, k+1))
+            if len(res)-1 < k:
+                res.append([])
+            res[k] += [node.val]
+        return res
