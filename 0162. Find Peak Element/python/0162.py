@@ -35,6 +35,29 @@ Link:https://leetcode.com/problems/find-peak-element/discuss/50259/My-clean-and-
                 right = mid-1
 
         return left if nums[left] >= nums[right] else right
+
+class Solution_1_Improve:
+"""
+Runtime: 44 ms, faster than 71.78% of Python3 online submissions for Find Peak Element.
+Memory Usage: 14.1 MB, less than 5.88% of Python3 online submissions for Find Peak Element.
+
+记这个!!!!!
+"""
+    def findPeakElement(self, nums: List[int]) -> int:
+        left = 0
+        right = len(nums)-1
+
+        while left < right: #这里不要用right-1，而是right
+            mid = (left+right)//2
+            if nums[mid] > nums[mid+1] and nums[mid] > nums[mid-1]:
+                return mid
+
+            if nums[mid] < nums[mid+1]:
+                left = mid+1
+            else:
+                right = mid
+
+        return left #此时一定时left==right，所以只需返回left
      
 class Solution_2:
 """

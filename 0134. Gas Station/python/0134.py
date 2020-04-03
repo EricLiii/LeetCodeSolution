@@ -8,11 +8,14 @@ Link: https://www.cnblogs.com/boring09/p/4248482.html
 Link: https://blog.csdn.net/qq508618087/article/details/50990076 这个链接讲得比较清楚.
 """
     def canCompleteCircuit(self, gas: List[int], cost: List[int]) -> int:
+        #这里的total其实是total短缺。
         start, tank, total = 0, 0, 0
         for i in range(len(gas)):
             tank += gas[i] - cost[i]
             if tank < 0:
-                start = i+1
+                #这里要注意是i+1, 因为是到不了i的，同时到i为止的短缺也会被计入total，
+                #所以要更新start为i+1
+                start = i+1 
                 #total是从i=0开始的油量积累，可能为正，可能为负.
                 #如果total<0,说明从i=0开始的gas之和是小于cost之和的.
                 total += tank
