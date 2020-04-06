@@ -42,3 +42,21 @@ Memory Usage: 14 MB, less than 5.41% of Python3 online submissions for Excel She
             #这样做连enumerate都不需要了！！！
             res = res*26 + ord(i)-ord('A')+1
         return res
+
+class Solution_4:
+"""
+Zefeng
+
+记这个吧!
+
+Runtime: 32 ms, faster than 52.05% of Python3 online submissions for Excel Sheet Column Number.
+Memory Usage: 13.7 MB, less than 9.09% of Python3 online submissions for Excel Sheet Column Number.
+"""
+    def titleToNumber(self, s: str) -> int:
+        alpha = string.ascii_uppercase #要记住这个怎么用.
+        res = 0
+        for i in range(len(s)):
+            idx = alpha.index(s[i])
+            res = res*26 + (idx+1)
+            
+        return res

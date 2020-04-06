@@ -21,6 +21,20 @@ Link: https://leetcode.com/problems/factorial-trailing-zeroes/discuss/196311/top
             return 1
         return n//5 + self.trailingZeroes(n//5)
         
+        
+class Solution_1_Improve:
+"""
+
+记这个!!!
+
+Runtime: 20 ms, faster than 97.13% of Python3 online submissions for Factorial Trailing Zeroes.
+Memory Usage: 13.8 MB, less than 10.00% of Python3 online submissions for Factorial Trailing Zeroes.
+"""
+    def trailingZeroes(self, n: int) -> int:
+        if n == 0:
+            return 0
+        return n//5 + self.trailingZeroes(n//5)
+        
 class Solution_2:
 """
 迭代

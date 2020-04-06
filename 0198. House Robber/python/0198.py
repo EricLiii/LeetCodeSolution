@@ -47,3 +47,20 @@ Memory Usage: 13.6 MB, less than 9.09% of Python3 online submissions for House R
         for i in range(2, len(nums)):
             prev, pre = pre, max(pre, nums[i]+prev)
         return pre
+        
+class Solution_4:
+"""
+Zefeng
+
+House Robber.
+Memory Usage: 13.8 MB, less than 9.09% of Python3 online submissions for House Robber.
+
+记这个，最简洁!
+"""
+    def rob(self, nums: List[int]) -> int:
+        if not nums:
+            return 0
+        p1, p2 = 0, nums[0]
+        for i in range(1, len(nums)):
+            p1, p1 = p2, max(p1+nums[i], p1)        
+        return p2
