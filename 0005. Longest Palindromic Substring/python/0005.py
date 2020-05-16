@@ -19,6 +19,10 @@ Link: https://leetcode.com/problems/longest-palindromic-substring/discuss/2925/P
         for i in range(len(s)):
             # 从i-maxLen开始计其实就是增加1.
             # 从i-maxLen-1开始计就是增加2.
+            
+            # 另外要注意，这里先判断i-maxLen-1再判断i-maxLen，
+            # 因为 (1) 如果maxLen可以增加2，那么就没必要再判断加1的情况，因为求的是最长
+            #      (2) 如果先判断i-maxLen再判断i-maxLen-1，maxLen的值已经被修改了。
             #a
         	if i - maxLen - 1 >= 0 and s[i-maxLen-1:i+1] == s[i-maxLen-1:i+1][::-1]:
         		start = i - maxLen - 1
