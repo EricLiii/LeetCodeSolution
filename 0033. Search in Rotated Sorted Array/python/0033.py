@@ -31,7 +31,9 @@ Memory Usage: 13.2 MB, less than 62.96% of Python3 online submissions for Search
             return mid 
 
         # If arr[l...mid] is sorted  
-        if arr[l] <= arr[mid]: #这里必须用<=判断，因为可能出现l==mid的情况.
+        #这里必须用<=判断，因为可能出现l==mid的情况.
+        #但是如果先判断arr[mid] <= arr[h]的话就不需要<=, 只需要<。
+        if arr[l] <= arr[mid]: 
 
             # As this subarray is sorted, we can quickly 
             # check if key lies in half or other half  
