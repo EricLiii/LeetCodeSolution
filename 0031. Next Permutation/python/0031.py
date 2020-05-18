@@ -36,3 +36,43 @@ Idea:
                         nums[flag], nums[-1] = nums[-1], nums[flag]
                 nums[flag+1:] = nums[flag+1:][::-1] #这个reverse part of list的方法值得学习。
                 break
+                
+                
+class Solution:
+"""
+Runtime: 44 ms, faster than 42.39% of Python3 online submissions for Next Permutation.
+Memory Usage: 13.8 MB, less than 5.56% of Python3 online submissions for Next Permutation.
+
+基于solution_1的修改,加了一下解释。
+
+"""
+    def nextPermutation(self, nums: List[int]) -> None:
+        """
+        Do not return anything, modify nums in-place instead.
+        """
+        flag = -1
+        for i in range(len(nums)-1, 0, -1):
+            if nums[i] <= nums[i-1]:
+                continue
+            else:
+                flag = i-1
+                break
+        if flag == -1:
+            # 注意: nums.reverse()是inplace的，因此可以直接nums.reverse()
+            #       而[::-1]不是inplace，所以要有左边，且必须加[:]，否则不是在原地址修改.
+            nums[:] = nums[::-1] 
+            return
+        
+        pos = -1
+        for j in range(flag+1, len(nums)):
+            if nums[j] > nums[flag]:
+                continue
+            else:
+            # 有可能出现相等的情况，例：[1,5,1]下一个是[5,1,1]
+                pos = j-1
+                break
+        if pos == -1:
+            nums[flag], nums[-1] = nums[-1], nums[flag]
+        else:
+            nums[flag], nums[pos] = nums[pos], nums[flag]
+        nums[flag+1:] = nums[flag+1:][::-1]
