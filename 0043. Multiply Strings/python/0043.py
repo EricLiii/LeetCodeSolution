@@ -88,3 +88,28 @@ https://leetcode.com/problems/multiply-strings/discuss/17605/Easiest-JAVA-Soluti
         #int(res): 避免"0","00","000",..等情况出现。
         res = res.lstrip("0") if int(res) != 0 else "0"
         return res
+        
+class Solution_4:
+"""
+Runtime: 240 ms, faster than 12.82% of Python3 online submissions for Multiply Strings.
+Memory Usage: 14 MB, less than 7.14% of Python3 online submissions for Multiply Strings.
+
+solution_3的另一个版本
+"""
+    def multiply(self, num1: str, num2: str) -> str:
+        len1, len2 = len(num1), len(num2)
+        # 切记，如果之后想避免倒着来，num1和num2需要提前倒序.
+        # 否则原本是求123*456, 结果会变成654*321.
+        num1 = num1[::-1]
+        num2 = num2[::-1]
+        res = [0] * (len1 + len2)
+        for i in range(len1):
+            for j in range(len2):
+                mul = int(num1[i]) * int(num2[j])
+                summ = res[i+j] + mul
+                res[i+j] = summ % 10
+                res[i+j+1] += summ // 10
+        res.reverse()
+        res = "".join(map(str, res))
+        res = res.lstrip("0") if int(res) != 0 else "0"
+        return res
