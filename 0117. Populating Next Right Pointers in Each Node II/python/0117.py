@@ -76,3 +76,35 @@ https://leetcode.com/problems/populating-next-right-pointers-in-each-node-ii/dis
                 root = root.next
             root = tmp.next #tmp指向的是root的下一层的第一个node.
         return dummy.next
+        
+class Solution_4:
+"""
+Runtime: 64 ms, faster than 15.75% of Python3 online submissions for Populating Next Right Pointers in Each Node II.
+Memory Usage: 14.9 MB, less than 100.00% of Python3 online submissions for Populating Next Right Pointers in Each Node II.
+
+对solution_3进行了改写，使其更易懂.
+但是记最好还是记solution_3.
+"""
+    def connect(self, root: 'Node') -> 'Node':
+        dummy = Node(0)
+        dummy.next = root
+        while root:
+            start = Node(0)
+            found_start = False
+            cur = start
+            while root:
+                if root.left:
+                    cur.next = root.left 
+                    if not found_start:
+                        start = cur 
+                        found_start = True
+                    cur = cur.next
+                if root.right:
+                    cur.next = root.right
+                    if not found_start:
+                        start = cur 
+                        found_start = True
+                    cur = cur.next
+                root = root.next
+            root = start.next 
+        return dummy.next

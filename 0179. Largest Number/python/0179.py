@@ -20,6 +20,9 @@ Link: https://leetcode.com/problems/largest-number/discuss/53270/Python-simple-s
                     else:
                         return 0
         """
+        #这里其实是自定义了python的比较器
+        #在python的比较器中,如果a>b返回1,a<b返回-1,a=b返回0
+        #这里只不过是把判断条件由a与b之间的比较变成了a+b和b+a之间的比较。
         compare = lambda a, b: 1 if a+b > b+a else -1 if a+b < b+a else 0
         _nums = list(map(str, nums))
         _nums.sort(key=functools.cmp_to_key(compare), reverse=True)

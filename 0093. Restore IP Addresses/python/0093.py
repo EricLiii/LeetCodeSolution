@@ -48,4 +48,33 @@ link: https://leetcode.com/problems/restore-ip-addresses/discuss/30972/WHO-CAN-B
                             if len(tmp) == len(s) + 3:
                                 res.append(tmp)
         return res
+        
+class Solution_3:
+"""
+Zefeng
+
+Runtime: 40 ms, faster than 35.32% of Python3 online submissions for Restore IP Addresses.
+Memory Usage: 13.8 MB, less than 5.56% of Python3 online submissions for Restore IP Addresses.
+
+dfs, 和solution_1类似，但是把case写一起了.
+
+
+"""
+    def restoreIpAddresses(self, s: str) -> List[str]:
+        res = []
+        self.helper(s, 0, [], res)
+        return res
+        
+    def helper(self, s, cnt, path, res):
+        if cnt > 4:
+            return
+        if not s and cnt == 4:
+            new = '.'.join(path)
+            res.append(new)
+            return
+        for i in range(min(3, len(s))):
+            tmp = s[:i+1]
+            if int(tmp) > 255 or int(tmp) < 0 or (tmp[0] == '0' and len(tmp) > 1):
+                continue
+            self.helper(s[i+1:], cnt+1, path+[s[:i+1]], res)
                      

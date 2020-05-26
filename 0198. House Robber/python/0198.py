@@ -56,6 +56,9 @@ House Robber.
 Memory Usage: 13.8 MB, less than 9.09% of Python3 online submissions for House Robber.
 
 记这个，最简洁!
+
+
+update: 这个解法好像是错的吧???再验证!!!!
 """
     def rob(self, nums: List[int]) -> int:
         if not nums:

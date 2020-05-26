@@ -102,3 +102,21 @@ Memory Usage: 13.1 MB, less than 84.28% of Python3 online submissions for Spiral
                                          #so won't affect the after process.
                     ret.append(row.pop(0))
         return ret
+        
+class Solution_3:
+"""
+Zefeng
+
+Runtime: 48 ms, faster than 7.70% of Python3 online submissions for Spiral Matrix.
+Memory Usage: 13.9 MB, less than 8.70% of Python3 online submissions for Spiral Matrix.
+
+solution_1的详细写法，思路一样.
+比solution_2省去了很多边界考虑.
+"""
+    def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
+        res = []
+        while matrix:
+            res += matrix.pop(0)
+            matrix = list(zip(*matrix))
+            matrix.reverse()
+        return res

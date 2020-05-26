@@ -77,3 +77,33 @@ Link: https://www.geeksforgeeks.org/inorder-tree-traversal-without-recursion-and
                     res.append(root.val)
                     root = root.right
         return res
+        
+class Solution_4:
+"""
+Runtime: 48 ms, faster than 6.87% of Python3 online submissions for Binary Tree Inorder Traversal.
+Memory Usage: 13.8 MB, less than 6.56% of Python3 online submissions for Binary Tree Inorder Traversal.
+
+https://leetcode.com/problems/binary-tree-inorder-traversal/discuss/31228/Simple-Python-iterative-solution-by-using-a-visited-flag-O(n)-56ms
+
+和solution_2作比较。
+
+如果像solution_2一样把append left的操作放在判断stack是否为空的外面，则不需要visited.
+否则需要记录是否经过node。举个反例，如果pop出cur而不将其设置visited=True,则在cur的上一层仍会将其再次append进stack。
+好好想一想。
+
+另外，这个方法可以推广至preorder and postorder，只需要换一下append的顺序即可!记!
+"""
+    def inorderTraversal(self, root: TreeNode) -> List[int]:
+        result, stack = [], [(root, False)]
+
+        while stack:
+            cur, visited = stack.pop()
+            if cur:
+                if visited:
+                    result.append(cur.val)
+                else:
+                    stack.append((cur.right, False))
+                    stack.append((cur, True))
+                    stack.append((cur.left, False))
+
+        return result

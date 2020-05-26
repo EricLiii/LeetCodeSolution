@@ -16,8 +16,7 @@ Link: https://blog.csdn.net/qq508618087/article/details/50990076 这个链接讲
                 #这里要注意是i+1, 因为是到不了i的，同时到i为止的短缺也会被计入total，
                 #所以要更新start为i+1
                 start = i+1 
-                #total是从i=0开始的油量积累，可能为正，可能为负.
-                #如果total<0,说明从i=0开始的gas之和是小于cost之和的.
+                #total是start之前欠下的油量,是负值.
                 total += tank
                 tank = 0
         #if total + tank < 0 判断从最新的start开始计算之后,tank能否填补之前的亏空.

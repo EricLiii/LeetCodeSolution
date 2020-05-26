@@ -20,6 +20,31 @@ Link: https://leetcode.com/problems/combinations/discuss/27002/Backtracking-Solu
         for i in range(start, n+1):
             self.helper(n, k-1, i+1, path+[i], res)
             
+class Solution_1_:
+"""
+Runtime: 1232 ms, faster than 5.16% of Python3 online submissions for Combinations.
+Memory Usage: 15.5 MB, less than 16.67% of Python3 online submissions for Combinations.
+
+跟solution_1类似
+"""
+    def combine(self, n: int, k: int) -> List[List[int]]:
+        nums = [i for i in range(1, n+1)]
+        res = []
+        self.helper(nums, k, [], res)
+        return res
+        
+    def helper(self, nums, k, path, res):
+        if len(path) == k:
+            tmp = sorted(path)
+            if tmp not in res:
+                res.append(tmp)
+            return
+        for i in range(len(nums)):
+            # 这里必须nums[i+1:]
+            # 如果用nums[:i]+nums[i+1:]，当n,k很大时会超时！
+            # 这也是solution_1为什么将i+1赋给start的原因.
+            self.helper(nums[i+1:], k, path+[nums[i]], res)
+            
 class Solution_2:
 """
 Runtime: 424 ms, faster than 63.06% of Python3 online submissions for Combinations.

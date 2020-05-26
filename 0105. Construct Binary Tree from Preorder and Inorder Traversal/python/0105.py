@@ -159,3 +159,22 @@ Memory Usage: 88.5 MB, less than 13.16% of Python3 online submissions for Constr
                 root.right = self.buildTree(preorder[len(inorder[:i])+1:], inorder[i+1:])
                 return root
         return None
+        
+class Solution_6:
+"""
+Runtime: 316 ms, faster than 16.05% of Python3 online submissions for Construct Binary Tree from Preorder and Inorder Traversal.
+Memory Usage: 52.5 MB, less than 36.84% of Python3 online submissions for Construct Binary Tree from Preorder and Inorder Traversal.
+
+solution_5的改进!
+"""
+    def buildTree(self, preorder: List[int], inorder: List[int]) -> TreeNode:
+        if not inorder:
+            return None
+        key = preorder.pop(0) #pop操作一定要放在for loop外面.
+        for i in range(len(inorder)):
+            if inorder[i] == key:
+                node = TreeNode(key)
+                node.left = self.buildTree(preorder, inorder[:i])
+                node.right = self.buildTree(preorder, inorder[i+1:])
+                return node
+        return None
