@@ -62,6 +62,7 @@ Idea:
         res = [[1]]
         for i in range(1, numRows):
             #这个lambda函数 将res[-1] + [0] 和 [0] + res[-1] 的对应位置相加.
+            #其实直接map(sum, zip(res[-1]+[0], [0]+res[-1]))也可以,记！！！
             res.append(list((map(lambda x, y: x+y, res[-1] + [0], [0] + res[-1]))))
             # OR res += [list((map(lambda x, y: x+y, res[-1] + [0], [0] + res[-1])))]
         return res[:numRows] #这里考虑了edge case: input=0. 若input是0，应该返回[].
