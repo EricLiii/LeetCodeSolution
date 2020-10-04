@@ -7,6 +7,9 @@ Memory Usage: 13.2 MB, less than 43.09% of Python3 online submissions for Spiral
 """
     def spiralOrder(self, matrix: List[List[int]]) -> List[int]:
         return matrix and [*matrix.pop(0)] + self.spiralOrder([*zip(*matrix)][::-1])
+        
+        #其实也可以这样写: return matrix and [*matrix.pop(0)] + self.spiralOrder(list(zip(*matrix))[::-1])
+        
 """
 Explanation:
 Eg, matrix = [[1,2,3],
