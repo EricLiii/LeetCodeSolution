@@ -10,3 +10,19 @@ https://segmentfault.com/a/1190000009429876
         if root in (None, p, q): return root
         left, right = (self.lowestCommonAncestor(kid, p, q) for kid in (root.left, root.right))
         return root if left and right else left or right
+        
+class Solution:
+"""
+展开写，方便记忆
+"""
+    def lowestCommonAncestor(self, root: 'TreeNode', p: 'TreeNode', q: 'TreeNode') -> 'TreeNode':
+        if root in (None, p, q):
+            return root
+        left = self.lowestCommonAncestor(root.left, p, q)
+        right = self.lowestCommonAncestor(root.right, p, q)
+        if left and right:
+            return root
+        elif not left:
+            return right
+        else: 
+            return left
