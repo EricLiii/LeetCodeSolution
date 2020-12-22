@@ -14,6 +14,8 @@ https://leetcode.com/problems/median-of-two-sorted-arrays/discuss/2511/Intuitive
             raise ValueError
 
         imin, imax, half_len = 0, m, (m + n + 1) // 2
+        # 因为计算i的时候是i = (imin + imax) // 2， 向下取整，所以要判断imin <= imax, 而不是imin < imax.
+        # 不然有些值取不到.
         while imin <= imax:
             i = (imin + imax) // 2
             j = half_len - i
