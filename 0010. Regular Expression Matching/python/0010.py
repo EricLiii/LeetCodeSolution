@@ -33,4 +33,8 @@ https://leetcode.com/problems/regular-expression-matching/discuss/5651/Easy-DP-J
                         M[i][j] = M[i][j-2]
                     else:
                         M[i][j] = M[i][j-2] or M[i-1][j-2] or M[i-1][j]
+                        # 这里主要是M[i-1][j]难理解,当*作为multiple用的时候,如果p[:b+1]也可以匹配s[:a],
+                        # 说明p[:b+1]也可以匹配s[:a+1],因为s[a]==p[b-1],"*"可以保证匹配。
+                        
+                        # 注: 这里a = i-1, b = j-1。 i, j只代表在M中的位置，不代表在字符串中的位置。
         return M[m][n]
