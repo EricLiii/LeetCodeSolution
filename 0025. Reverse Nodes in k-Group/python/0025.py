@@ -24,3 +24,40 @@ https://leetcode.com/problems/reverse-nodes-in-k-group/discuss/172576/Python-or-
             cur = nxt
             count -= 1
         return (cur, prev)
+        
+        
+class Solution_2:
+"""
+Runtime: 60 ms, faster than 11.18% of Python3 online submissions for Reverse Nodes in k-Group.
+
+Zefeng
+"""
+    def reverseKGroup(self, head: ListNode, k: int) -> ListNode:
+        pre = ListNode()
+        dummy = pre
+        pre.next = head
+        cur = head
+        while cur:
+            #判断是否有足够的nodes
+            tmp = cur
+            count = 0
+            while tmp:
+                count+= 1
+                tmp = tmp.next
+            if count < k:
+                break
+                
+            for i in range(1, k):
+                if cur.next:
+                    nxt = cur.next
+                    nnxt = nxt.next
+                    pnxt = pre.next
+
+                    pre.next = nxt
+                    nxt.next = pnxt
+                    cur.next = nnxt
+            #记住要更新pre
+            #而且是先更新pre,再更新cur。
+            pre = cur
+            cur = cur.next
+        return dummy.next
