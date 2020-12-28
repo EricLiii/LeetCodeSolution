@@ -14,6 +14,8 @@ https://blog.csdn.net/zhc_24/article/details/80363035
 		#注意这里交换的顺序不能变。
 		#如果是 nums[i], nums[nums[i]-1] = nums[nums[i]-1], nums[i]会超时。
 		#这是因为if you alter the value of nums[i] first, then ( nums[i] - 1 ) changes. So you must alter nums[nums[i] - 1] first !
+        
+        #易知,nums[i]-1 不可能小于i,因为前面一直保证nums[nums[i]-1] == nums[i],所以小于i的位置都满足了此条件,只可能在大于i的位置找。
                 nums[nums[i]-1], nums[i] = nums[i], nums[nums[i]-1]
         
         for i in range(0, n):
