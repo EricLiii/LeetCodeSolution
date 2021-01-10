@@ -9,7 +9,8 @@ https://leetcode.com/problems/interleaving-string/discuss/31879/My-DP-solution-i
         if len(s3) != len(s1) + len(s2):
             return False
         
-        table = [[False]*(len(s2)+1)]*(len(s1)+1) #s1,s2顺序别错，不然不通过。TODO：想想为什么？
+        #s1,s2的顺序如果变了，之后的s1,s2都要变
+        table = [[False]*(len(s2)+1)]*(len(s1)+1) 
         table[0][0] = True
         
         for i in range(len(s1)+1):
@@ -21,6 +22,7 @@ https://leetcode.com/problems/interleaving-string/discuss/31879/My-DP-solution-i
                 elif j == 0:
                     table[i][j] = table[i-1][j] and s1[i-1] == s3[i+j-1]
                 else:
+                    # 即使连续从s1,s2中的一个取了字符也没关系，因为可以将这两个字符合并为取一次，故仍然满足interleaving的原则。
                     table[i][j] = (table[i-1][j] and s1[i-1] == s3[i+j-1]) or (table[i][j-1] and s2[j-1] == s3[i+j-1])
                     
         return table[-1][-1]
